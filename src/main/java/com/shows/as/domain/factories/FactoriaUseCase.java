@@ -16,7 +16,9 @@ public class FactoriaUseCase {
     }
 
     private FactoriaUseCase() {
-
+        consultarRepresentacions = new ConsultarRepresentacions();
+        consultarOcupacio = new ConsultarOcupacio();
+        comprarEntrada = new ComprarEntrada();
     }
 
     public ConsultarRepresentacions getConsultarRepresentacions() {
