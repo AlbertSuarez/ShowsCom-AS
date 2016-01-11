@@ -15,10 +15,11 @@ public class Espectacle {
     }
 
     // TODO obteRepresentacions --> result ha de ser un set de tuples --> r.getInfo();
+    // TODO Utilitzar tuple creada TupleTypeRepresentacio
     public Set<Representacio> obteRepresentacions(Date data){
         Set<Representacio> result = new LinkedHashSet<Representacio>();
         for(Representacio  r: representacions){
-            if(data == r.getDate())result.add(r);
+            if (data == r.getDate()) result.add(r);
         }
         return result;
     }

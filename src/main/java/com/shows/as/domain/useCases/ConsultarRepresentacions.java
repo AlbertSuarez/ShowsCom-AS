@@ -11,15 +11,20 @@ import java.util.Set;
 
 public class ConsultarRepresentacions {
 
+    public static final String noHiHaEspectacles = "No hi ha espectacles enregistrats al sistema";
+
     public Set<String> consultaEspectacles() {
         FactoriaCtrl factoriaCtrl = FactoriaCtrl.getInstance();
         CtrlEspectacle ctrlEspectacle = factoriaCtrl.getCtrlEspectacle();
         Set<Espectacle> espectacles = ctrlEspectacle.getAll();
-        if(espectacles.size() == 0)throw new IllegalStateException("No hi ha espectacles");
+
+        if( espectacles.size() == 0)throw new IllegalStateException(noHiHaEspectacles);
+
         Set<String> result = new LinkedHashSet<String>();
-        for(Espectacle e : espectacles){
+        for (Espectacle e : espectacles){
             result.add(e.getTitol());
         }
+
         return result;
     }
 
@@ -27,9 +32,9 @@ public class ConsultarRepresentacions {
     public Set<Representacio> consultaRepresentacions(String titol, Date data) {
         FactoriaCtrl factoriaCtrl = FactoriaCtrl.getInstance();
         CtrlEspectacle ctrlEspectacle = factoriaCtrl.getCtrlEspectacle();
+
         Espectacle espectacle = ctrlEspectacle.getEspectacle(titol);
-        Set<Representacio> result = new LinkedHashSet<Representacio>();
-        result = espectacle.obteRepresentacions(data);
-        return result;
+
+        return espectacle.obteRepresentacions(data);
     }
 }

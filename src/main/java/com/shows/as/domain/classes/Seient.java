@@ -1,8 +1,8 @@
 package com.shows.as.domain.classes;
 
-import javax.persistence.Entity;
+//import javax.persistence.Entity;
 
-@Entity
+//@Entity
 public class Seient {
 
     private Integer fila;

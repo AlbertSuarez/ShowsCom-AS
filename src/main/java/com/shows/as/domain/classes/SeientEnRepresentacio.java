@@ -8,7 +8,9 @@ public class SeientEnRepresentacio {
     private Entrada entrada;
     private Seient seient;
 
-    // TODO getSeient
+    public Seient getSeient() {
+        return seient;
+    }
 
     // TODO canviarOcupat
 

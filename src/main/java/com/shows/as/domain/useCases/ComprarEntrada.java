@@ -11,7 +11,7 @@ import java.util.Set;
 
 public class ComprarEntrada {
 
-    public static final String noHiHaRepresentacions = "noHiHaRepresentacions";
+    public static final String noHiHaRepresentacions = "No Hi Ha Representacions per l'espectacle i data";
 
     private String titolEsp;
     private Date dataRep;
@@ -28,13 +28,13 @@ public class ComprarEntrada {
         return consultarRepresentacions.consultaEspectacles();
     }
 
-    public Set<Representacio> obteRepresentacions(String titol, Date data) throws Exception {
+    public Set<Representacio> obteRepresentacions(String titol, Date data) {
         FactoriaUseCase factoriaUseCase = FactoriaUseCase.getInstance();
         ConsultarRepresentacions consultarRepresentacions = factoriaUseCase.getConsultarRepresentacions();
 
         Set<Representacio> result = consultarRepresentacions.consultaRepresentacions(titol, data);
 
-        if (result.isEmpty()) throw new Exception(noHiHaRepresentacions);
+        if (result.isEmpty()) throw new IllegalStateException(noHiHaRepresentacions);
 
         this.titolEsp = titol;
         this.dataRep = data;
