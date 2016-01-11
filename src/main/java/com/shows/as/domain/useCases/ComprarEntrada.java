@@ -2,6 +2,7 @@ package com.shows.as.domain.useCases;
 
 import com.shows.as.domain.classes.Representacio;
 import com.shows.as.domain.classes.Seient;
+import com.shows.as.domain.enums.Moneda;
 import com.shows.as.domain.enums.TipusSessio;
 import com.shows.as.domain.factories.FactoriaUseCase;
 
@@ -39,6 +40,32 @@ public class ComprarEntrada {
         this.dataRep = data;
 
         return result;
+    }
+
+    public Set<Seient> obteOcupacio(String nomLocal, TipusSessio sessio, Integer nombEspectadors) {
+        FactoriaUseCase factoriaUseCase = FactoriaUseCase.getInstance();
+        ConsultarOcupacio consultarOcupacio = factoriaUseCase.getConsultarOcupacio();
+
+        Set<Seient> result = consultarOcupacio.consultaOcupacio(nomLocal, sessio, nombEspectadors);
+
+        this.nLocal = nomLocal;
+        this.tSessio = sessio;
+        this.nEspectadors = nombEspectadors;
+
+        return result;
+    }
+
+    // TODO Seleccionar seients
+
+    public Float obtePreuMoneda(Moneda moneda) {
+
+
+
+        return (float) 0.0;
+    }
+
+    public void pagament(String dni, Integer codiB, String numCompte) {
+
     }
 
 }
