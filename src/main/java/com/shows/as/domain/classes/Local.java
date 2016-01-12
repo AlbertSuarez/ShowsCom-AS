@@ -1,13 +1,13 @@
 package com.shows.as.domain.classes;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+//import javax.persistence.Entity;
+//import javax.persistence.Id;
 import java.util.Set;
 
-@Entity
+//@Entity
 public class Local {
 
-    @Id
+    //@Id
     private String nom;
     private String adreca;
     private Set<Seient> seients;
