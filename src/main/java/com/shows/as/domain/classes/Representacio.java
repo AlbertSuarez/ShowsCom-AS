@@ -2,21 +2,38 @@ package com.shows.as.domain.classes;
 
 import com.shows.as.domain.tupleTypes.TupleTypeRepresentacio;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.IdClass;
+import javax.persistence.Transient;
 import java.util.Date;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-public class Representacio {
+@Entity
+@IdClass(RepresentacioPK.class)
+public class Representacio  {
 
     public static final String seientsNoDisp = "El nombre d'espectadors es mes gran que el nombre de seients lliures";
 
     private Float preu;
     private Date data;
     private Integer nombreSeientsLliures;
-    private Sessio sessio;
-    private Local local;
+    @Id
+    private String nomSessio;
+    @Id
+    private String nomLocal;
+    @Transient
     private Set<SeientEnRepresentacio> seients;
 
+
+    public Representacio(Float preu, Date data, Integer nombreSeientsLliures, String sessio, Local local){
+        this.preu = preu;
+        this.data = data;
+        this.nombreSeientsLliures = nombreSeientsLliures;
+        this.nomSessio = sessio;
+        this.nomLocal = local.getNom();
+    }
 
     public Date getDate() {
         return data;
@@ -24,8 +41,8 @@ public class Representacio {
 
     public TupleTypeRepresentacio getInfo() {
         TupleTypeRepresentacio info = new TupleTypeRepresentacio();
-        info.nomLocal = local.getNom();
-        info.sessio = sessio.getSessio();
+        info.nomLocal = nomLocal;
+        info.nomSessio = nomSessio;
         info.estrena = esEstrena();
         info.nombreSeientsLliures = this.nombreSeientsLliures;
         info.preu = this.preu;

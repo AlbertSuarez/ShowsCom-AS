@@ -2,8 +2,14 @@ package com.shows.as.domain.classes;
 
 import com.shows.as.domain.enums.Moneda;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Transient;
+
+@Entity
 public class Showscom {
 
+    @Transient
     private static Showscom instance = new Showscom();
     private Integer codiBanc;
     private String numeroCompte;

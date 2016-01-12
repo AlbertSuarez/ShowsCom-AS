@@ -1,16 +1,22 @@
 package com.shows.as.domain.classes;
 
-//import javax.persistence.Entity;
-//import javax.persistence.Id;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Transient;
 import java.util.Set;
 
-//@Entity
+@Entity
 public class Local {
 
-    //@Id
+    @Id
     private String nom;
     private String adreca;
+    @Transient
     private Set<Seient> seients;
+
+    public Local(){
+
+    }
 
     public Local(String nom, String adreca){
         this.nom = nom;

@@ -7,7 +7,7 @@ import java.util.Date;
 public class TupleTypeRepresentacio {
 
     public String nomLocal;
-    public TipusSessio sessio;
+    public String nomSessio;
     public Integer nombreSeientsLliures;
     public Boolean estrena;
     public Float preu;
