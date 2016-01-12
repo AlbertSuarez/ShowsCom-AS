@@ -1,11 +1,10 @@
 package com.shows.as.domain.useCases;
 
-import com.shows.as.domain.classes.Representacio;
 import com.shows.as.domain.classes.Seient;
 import com.shows.as.domain.enums.Moneda;
 import com.shows.as.domain.enums.TipusSessio;
 import com.shows.as.domain.factories.FactoriaUseCase;
-
+import com.shows.as.domain.tupleTypes.TupleTypeRepresentacio;
 import java.util.Date;
 import java.util.Set;
 
@@ -28,11 +27,11 @@ public class ComprarEntrada {
         return consultarRepresentacions.consultaEspectacles();
     }
 
-    public Set<Representacio> obteRepresentacions(String titol, Date data) {
+    public Set<TupleTypeRepresentacio> obteRepresentacions(String titol, Date data) {
         FactoriaUseCase factoriaUseCase = FactoriaUseCase.getInstance();
         ConsultarRepresentacions consultarRepresentacions = factoriaUseCase.getConsultarRepresentacions();
 
-        Set<Representacio> result = consultarRepresentacions.consultaRepresentacions(titol, data);
+        Set<TupleTypeRepresentacio> result = consultarRepresentacions.consultaRepresentacions(titol, data);
 
         if (result.isEmpty()) throw new IllegalStateException(noHiHaRepresentacions);
 

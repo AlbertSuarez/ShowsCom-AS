@@ -6,8 +6,6 @@ import java.util.Date;
 
 public class TupleTypeRepresentacio {
 
-    public String titol;
-    public Date data;
     public String nomLocal;
     public TipusSessio sessio;
     public Integer nombreSeientsLliures;

@@ -8,7 +8,7 @@ import java.util.Set;
 
 public class Representacio {
 
-    public static final String seientsNoDisp = "seientsNoDisp";
+    public static final String seientsNoDisp = "El nombre d'espectadors es mes gran que el nombre de seients lliures";
 
     private Float preu;
     private Date data;
@@ -22,17 +22,14 @@ public class Representacio {
         return data;
     }
 
-    // TODO getInfo
-
-    public TupleTypeRepresentacio getInfoCompleta() {
-        TupleTypeRepresentacio infoC = new TupleTypeRepresentacio();
-        infoC.nomLocal = local.getNom();
-        infoC.sessio = sessio.getSessio();
-        infoC.estrena = esEstrena();
-        infoC.data = this.data;
-        infoC.nombreSeientsLliures = this.nombreSeientsLliures;
-        infoC.preu = this.preu;
-        return infoC;
+    public TupleTypeRepresentacio getInfo() {
+        TupleTypeRepresentacio info = new TupleTypeRepresentacio();
+        info.nomLocal = local.getNom();
+        info.sessio = sessio.getSessio();
+        info.estrena = esEstrena();
+        info.nombreSeientsLliures = this.nombreSeientsLliures;
+        info.preu = this.preu;
+        return info;
     }
 
     public Float getPreu() {
