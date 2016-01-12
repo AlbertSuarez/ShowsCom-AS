@@ -10,4 +10,6 @@ public class Utils {
         return Long.toString(generator.nextLong());
     }
 
+    public static int randomInt(){return generator.nextInt();}
+
 }
