@@ -35,4 +35,7 @@ public class Showscom {
         return divisa;
     }
 
+    public String getNumeroCompte() {
+        return numeroCompte;
+    }
 }

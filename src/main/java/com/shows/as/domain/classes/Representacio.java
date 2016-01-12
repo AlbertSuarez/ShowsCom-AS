@@ -55,6 +55,8 @@ public class Representacio {
         return seients;
     }
 
-    // TODO associaEntrada
+    public void associaEntrada(Entrada entrada) {
+        // TODO this.entrada.add(entrada)
+    }
 
 }

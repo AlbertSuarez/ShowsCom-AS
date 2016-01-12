@@ -1,10 +1,10 @@
 package com.shows.as.domain.useCases;
 
+import com.shows.as.domain.adapters.IBankServiceAdapter;
 import com.shows.as.domain.adapters.ICurrencyConvertorAdapter;
-import com.shows.as.domain.classes.Representacio;
-import com.shows.as.domain.classes.Seient;
-import com.shows.as.domain.classes.Showscom;
+import com.shows.as.domain.classes.*;
 import com.shows.as.domain.controllers.CtrlRepresentacio;
+import com.shows.as.domain.controllers.CtrlSeientEnRepresentacio;
 import com.shows.as.domain.enums.Moneda;
 import com.shows.as.domain.enums.TipusSessio;
 import com.shows.as.domain.factories.FactoriaCtrl;
@@ -12,15 +12,14 @@ import com.shows.as.domain.factories.FactoriaServeis;
 import com.shows.as.domain.factories.FactoriaUseCase;
 import com.shows.as.domain.tupleTypes.TupleTypeRepresentacio;
 import com.shows.as.domain.tupleTypes.TupleTypeSeleccioSeients;
+import com.shows.as.domain.utils.Utils;
 
-import java.util.Arrays;
-import java.util.Date;
-import java.util.LinkedHashSet;
-import java.util.Set;
+import java.util.*;
 
 public class ComprarEntrada {
 
     public static final String noHiHaRepresentacions = "No Hi Ha Representacions per l'espectacle i data";
+    public static final String pagamentNoAutoritzat = "El pagament no s'autoritza";
 
     private String titolEsp;
     private Date dataRep;
@@ -136,8 +135,45 @@ public class ComprarEntrada {
         return this.preuTotal * conversio;
     }
 
+    /**
+     * @exception IllegalStateException serveiNoDisponible: el servei no esta disponible o no autoritza el pagament.
+     * @exception IllegalStateException pagamentNoAutoritzat: El pagament no s'autoritza.
+     * @param dni El dni de la persona que paga.
+     * @param codiB El codi bancari de la persona que paga.
+     * @param numCompte El numero de compte de la persona que paga.
+     * @post pagament: el sistema crida a l'operacio <code>autoritza(dni, codiB, numCompte, import, codiBancShows, numCompteShows, dAvui):Boolean</code>
+     *                  del servei Bank Service amb les dades dels comptes per fer la transferència i el preu total de l'entrada.
+     * @post creacioEntrada: si el pagament s'ha produït amb èxit, es crea una instància de entrada i de les seves associacions amb la representació i els seients de la representació.
+     */
     public void pagament(String dni, Integer codiB, String numCompte) {
+        Showscom showscom = Showscom.getInstance();
+        Integer cb = showscom.getCodiBanc();
+        String nc = showscom.getNumeroCompte();
 
+        FactoriaServeis factoriaServeis = FactoriaServeis.getInstance();
+        IBankServiceAdapter iBankServiceAdapter = factoriaServeis.getiBankServiceAdapter();
+
+        Date dt = Calendar.getInstance().getTime();
+
+        Boolean b = iBankServiceAdapter.autoritza(dni, codiB, numCompte, this.preuTotal, cb, nc, dt);
+
+        if (!b) throw new IllegalStateException(pagamentNoAutoritzat);
+
+        String id = Utils.random();
+
+        FactoriaCtrl factoriaCtrl = FactoriaCtrl.getInstance();
+        CtrlRepresentacio ctrlRepresentacio = factoriaCtrl.getCtrlRepresentacio();
+        CtrlSeientEnRepresentacio ctrlSeientEnRepresentacio = factoriaCtrl.getCtrlSeientEnRepresentacio();
+
+        Representacio r = ctrlRepresentacio.getRepresentacio(this.nLocal, this.tSessio);
+
+        Set<SeientEnRepresentacio> seientRep = new LinkedHashSet<SeientEnRepresentacio>();
+        for (Seient seient : this.seients) {
+            seientRep.add(ctrlSeientEnRepresentacio.getSeientEnRepresentacio(this.nLocal, this.tSessio, seient.getFila(), seient.getColumna()));
+        }
+
+        Entrada e = new Entrada(id, dni, this.nEspectadors, dt, this.preuTotal);
+        e.associa(r, seientRep);
     }
 
 }

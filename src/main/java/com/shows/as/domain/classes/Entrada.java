@@ -14,6 +14,18 @@ public class Entrada {
     private Representacio representacio;
     private Set<SeientEnRepresentacio> seients;
 
-    // TODO associaEntrada
+    public Entrada(String identificador, String dniClient, Integer nombreEspectadors, Date data, Float preu) {
+        this.identificador = identificador;
+        this.dniClient = dniClient;
+        this.nombreEspectadors = nombreEspectadors;
+        this.data = data;
+        this.preu = preu;
+    }
+
+    public void associa(Representacio r, Set<SeientEnRepresentacio> seientRep) {
+        this.representacio = r;
+        r.associaEntrada(this);
+        this.seients = seientRep;
+    }
 
 }
