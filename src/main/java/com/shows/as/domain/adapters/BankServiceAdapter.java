@@ -1,5 +1,6 @@
 package com.shows.as.domain.adapters;
 
+import com.shows.as.domain.factories.ServiceLocator;
 import com.shows.as.service.BankService;
 
 import java.util.Date;
@@ -10,7 +11,8 @@ import java.util.Date;
 public class BankServiceAdapter implements IBankServiceAdapter {
 
     public Boolean autoritza(String dni, Integer codiB, String numCompte, Float preu, Integer codiBancShows, String numCompteShows, Date dAvui){
-        BankService b = new BankService();
+       ServiceLocator  s = ServiceLocator.getInstance();
+        BankService b = s.getBankService();
         return b.autoritza(dni,codiB,numCompte,preu,codiBancShows,numCompteShows,dAvui);
     }
 

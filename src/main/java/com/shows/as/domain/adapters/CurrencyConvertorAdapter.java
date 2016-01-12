@@ -1,12 +1,14 @@
 package com.shows.as.domain.adapters;
 
 import com.shows.as.domain.enums.Moneda;
+import com.shows.as.domain.factories.ServiceLocator;
 import com.shows.as.service.CurrencyService;
 
 public class CurrencyConvertorAdapter implements ICurrencyConvertorAdapter {
 
     public Float conversionRate(Moneda divisa, Moneda moneda) {
-        CurrencyService currencyService = new CurrencyService();
+        ServiceLocator s = ServiceLocator.getInstance();
+        CurrencyService currencyService = s.getCurrencyService();
         return currencyService.getConversionRate(divisa, moneda);
     }
 
