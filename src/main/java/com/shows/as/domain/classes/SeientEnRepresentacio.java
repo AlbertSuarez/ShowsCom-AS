@@ -12,6 +12,8 @@ public class SeientEnRepresentacio {
         return seient;
     }
 
-    // TODO canviarOcupat
+    public void canviarOcupat(Representacio r) {
+        // TODO if (this.Representacio == r) then estat = ocupat
+    }
 
 }

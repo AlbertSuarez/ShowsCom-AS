@@ -1,11 +1,19 @@
 package com.shows.as.domain.useCases;
 
+import com.shows.as.domain.classes.Representacio;
 import com.shows.as.domain.classes.Seient;
+import com.shows.as.domain.classes.Showscom;
+import com.shows.as.domain.controllers.CtrlRepresentacio;
 import com.shows.as.domain.enums.Moneda;
 import com.shows.as.domain.enums.TipusSessio;
+import com.shows.as.domain.factories.FactoriaCtrl;
 import com.shows.as.domain.factories.FactoriaUseCase;
 import com.shows.as.domain.tupleTypes.TupleTypeRepresentacio;
+import com.shows.as.domain.tupleTypes.TupleTypeSeleccioSeients;
+
+import java.util.Arrays;
 import java.util.Date;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class ComprarEntrada {
@@ -77,7 +85,35 @@ public class ComprarEntrada {
         return result;
     }
 
-    // TODO Seleccionar seients
+    /**
+     * @pre seientsLliures: els seients estan lliures per la representacio.
+     * @param seients Els seients de la representacio.
+     * @return result = preu total de l'entrada i les monedes en les que pot demanar la conversio.
+     * @post emmagatzemaDades: s'emmagatzema a la capa de domini els seients i el preu total de l'entrada.
+     */
+    public TupleTypeSeleccioSeients seleccionarSeients(Set<Seient> seients) {
+        TupleTypeSeleccioSeients result = new TupleTypeSeleccioSeients();
+        FactoriaCtrl factoriaCtrl = FactoriaCtrl.getInstance();
+        CtrlRepresentacio ctrlRepresentacio = factoriaCtrl.getCtrlRepresentacio();
+
+        Representacio r = ctrlRepresentacio.getRepresentacio(this.nLocal, this.tSessio);
+
+        Float p = r.getPreu();
+        p += r.getRecarrec();
+
+        for (Seient s : seients) {
+            s.canviarEstat(r);
+        }
+
+        Showscom showscom = Showscom.getInstance();
+        result.preu = (this.nEspectadors * p) + showscom.getComissio();
+        result.canvis = new LinkedHashSet<Moneda>(Arrays.asList(showscom.getCanvis()));
+
+        this.seients = seients;
+        this.preuTotal = result.preu;
+
+        return result;
+    }
 
     public Float obtePreuMoneda(Moneda moneda) {
 

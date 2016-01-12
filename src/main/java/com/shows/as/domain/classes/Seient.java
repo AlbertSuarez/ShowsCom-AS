@@ -16,6 +16,8 @@ public class Seient {
         return columna;
     }
 
-    // TODO canviarEstat
+    public void canviarEstat(Representacio r) {
+        // TODO this.SeientEnRepresentacio.canviarOcupat(r)
+    }
 
 }
