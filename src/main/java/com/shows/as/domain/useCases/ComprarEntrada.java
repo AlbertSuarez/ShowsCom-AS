@@ -1,5 +1,6 @@
 package com.shows.as.domain.useCases;
 
+import com.shows.as.domain.adapters.ICurrencyConvertorAdapter;
 import com.shows.as.domain.classes.Representacio;
 import com.shows.as.domain.classes.Seient;
 import com.shows.as.domain.classes.Showscom;
@@ -7,6 +8,7 @@ import com.shows.as.domain.controllers.CtrlRepresentacio;
 import com.shows.as.domain.enums.Moneda;
 import com.shows.as.domain.enums.TipusSessio;
 import com.shows.as.domain.factories.FactoriaCtrl;
+import com.shows.as.domain.factories.FactoriaServeis;
 import com.shows.as.domain.factories.FactoriaUseCase;
 import com.shows.as.domain.tupleTypes.TupleTypeRepresentacio;
 import com.shows.as.domain.tupleTypes.TupleTypeSeleccioSeients;
@@ -115,11 +117,23 @@ public class ComprarEntrada {
         return result;
     }
 
+    /**
+     * @pre monedaExisteix: la moneda es un dels canvis permesos.
+     * @exception IllegalStateException serveiNoDisponible: el servei no esta disponible.
+     * @param moneda La moneda a realitzar la conversio.
+     * @post el sistema crida a l'operacio <code>conversionRate(divisa, moneda):Float</code> del servei currency convertor per obtenir el canvi entre l'euro i la moneda.
+     * @return result = preu (emmagatzemat a la capa de domini) * canvi obtingut al servei anterior.
+     */
     public Float obtePreuMoneda(Moneda moneda) {
+        FactoriaServeis factoriaServeis = FactoriaServeis.getInstance();
+        ICurrencyConvertorAdapter iCurrencyConvertorAdapter = factoriaServeis.getiCurrencyConvertorAdapter();
 
+        Showscom showscom = Showscom.getInstance();
+        Moneda divisa = showscom.getDivisa();
 
+        Float conversio = iCurrencyConvertorAdapter.conversionRate(divisa, moneda);
 
-        return (float) 0.0;
+        return this.preuTotal * conversio;
     }
 
     public void pagament(String dni, Integer codiB, String numCompte) {
