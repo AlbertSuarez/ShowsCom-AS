@@ -5,7 +5,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/oxm http://www.springframework.org/schema/oxm/spring-oxm.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
 
-    <context:component-scan base-package="myproject"/>
+    <context:component-scan base-package="com.shows.as"/>
 
     <!-- Define the SOAP version used by the WSDL -->
     <bean id="soapMessageFactory" class="org.springframework.ws.soap.saaj.SaajSoapMessageFactory">
@@ -15,7 +15,7 @@
     </bean>
 
     <!-- The location of the generated Java files -->
-    <oxm:jaxb2-marshaller id="marshaller" contextPath="myproject.wsdl.currency"/>
+    <oxm:jaxb2-marshaller id="marshaller" contextPath="com.shows.as.wsdl.currency"/>
 
     <!-- Configure Spring Web Services -->
     <bean id="webServiceTemplate" class="org.springframework.ws.client.core.WebServiceTemplate">

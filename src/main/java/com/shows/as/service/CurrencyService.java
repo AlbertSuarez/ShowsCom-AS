@@ -1,14 +1,12 @@
-package com.shows.as.domain.services;
+package com.shows.as.service;
 
-import myproject.wsdl.currency.ConversionRate;
-import myproject.wsdl.currency.ConversionRateResponse;
-import myproject.wsdl.currency.Currency;
-import myproject.wsdl.currency.ObjectFactory;
+import com.shows.as.wsdl.currency.ConversionRate;
+import com.shows.as.wsdl.currency.ConversionRateResponse;
+import com.shows.as.wsdl.currency.Currency;
+import com.shows.as.wsdl.currency.ObjectFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ws.client.core.WebServiceTemplate;
-
-/** http://myshittycode.com/2013/10/01/using-spring-web-services-and-jaxb-to-invoke-web-service-based-on-wsdl/ */
 
 @Service
 public class CurrencyService {

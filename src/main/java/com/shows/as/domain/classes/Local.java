@@ -12,9 +12,9 @@ public class Local {
     private String adreca;
     private Set<Seient> seients;
 
-    public Local(String nom, String adreça){
+    public Local(String nom, String adreca){
         this.nom = nom;
-        this.adreca = adreça;
+        this.adreca = adreca;
     }
 
     public String getNom() {

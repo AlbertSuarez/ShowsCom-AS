@@ -32,7 +32,7 @@
                 </executions>
                 <configuration>
                     <!-- Package to store the generated file -->
-                    <packageName>myproject.wsdl.currency</packageName>
+                    <packageName>com.shows.as.wsdl.currency</packageName>
                     <!-- Treat the input as WSDL -->
                     <wsdl>true</wsdl>
                     <!-- Input is not XML schema -->
