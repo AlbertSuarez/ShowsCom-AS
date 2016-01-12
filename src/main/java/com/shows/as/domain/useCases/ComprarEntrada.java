@@ -20,6 +20,10 @@ public class ComprarEntrada {
     private Set<Seient> seients;
     private Float preuTotal;
 
+    /**
+     * @exception IllegalStateException noHiHaEspectacles: No hi ha espectacles enregistrats al sistema.
+     * @return result = obte el titol de tots els espectacles existents al sistema.
+     */
     public Set<String> obteEspectacles() {
         FactoriaUseCase factoriaUseCase = FactoriaUseCase.getInstance();
         ConsultarRepresentacions consultarRepresentacions = factoriaUseCase.getConsultarRepresentacions();
@@ -27,6 +31,15 @@ public class ComprarEntrada {
         return consultarRepresentacions.consultaEspectacles();
     }
 
+    /**
+     * @pre exiseixEspecacle: L'espectacle amb titol existeix.
+     * @pre dataCorrecta: La data es correcta.
+     * @exception IllegalStateException noHiHaRepresentacions: No Hi Ha Representacions per l'espectacle i data.
+     * @param titol Titol de l'espectacle.
+     * @param data Data de l'espectacle.
+     * @return result = obte els locals, sessions, el nombre de seients lliures, la indicacio de si es estrena i el preu de totes les representacions.
+     * @post emmagatzemaDades: s'emmagatzema a la capa de domini el titol i la data.
+     */
     public Set<TupleTypeRepresentacio> obteRepresentacions(String titol, Date data) {
         FactoriaUseCase factoriaUseCase = FactoriaUseCase.getInstance();
         ConsultarRepresentacions consultarRepresentacions = factoriaUseCase.getConsultarRepresentacions();
@@ -41,6 +54,16 @@ public class ComprarEntrada {
         return result;
     }
 
+    /**
+     * @pre representacioExisteix: la representacio existeix.
+     * @pre nombEspectadorsOK: el nombEspectadors es mes gran que 0.
+     * @exception IllegalStateException seientsNoDisp: El nombre d'espectadors es mes gran que el nombre de seients lliures.
+     * @param nomLocal El nom del local.
+     * @param sessio El tipus de la sessio.
+     * @param nombEspectadors El nombre d'espectadors.
+     * @return result = fila i columna de tots els seients disponibles per a aquella representacio.
+     * @post emmagatzemaDades: s'emmagatzema a la capa de domini el nomLocal, sessio i nombEspectadors.
+     */
     public Set<Seient> obteOcupacio(String nomLocal, TipusSessio sessio, Integer nombEspectadors) {
         FactoriaUseCase factoriaUseCase = FactoriaUseCase.getInstance();
         ConsultarOcupacio consultarOcupacio = factoriaUseCase.getConsultarOcupacio();

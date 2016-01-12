@@ -52,7 +52,7 @@ public class Representacio {
             seients.add(sr.getSeient());
         }
 
-        return  seients;
+        return seients;
     }
 
     // TODO associaEntrada

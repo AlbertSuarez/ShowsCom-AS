@@ -13,7 +13,7 @@ public class ConsultarRepresentacions {
     public static final String noHiHaEspectacles = "No hi ha espectacles enregistrats al sistema";
 
     /**
-     * @exception IllegalStateException: noHiHaEspectacles: No hi ha espectacles enregistrats al sistema.
+     * @exception IllegalStateException noHiHaEspectacles: No hi ha espectacles enregistrats al sistema.
      * @return result = obte el titol de tots els espectacles existents al sistema.
      */
     public Set<String> consultaEspectacles() {
