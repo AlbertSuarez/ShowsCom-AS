@@ -42,7 +42,7 @@ public class ComprarEntradesController {
     }
 
     public void prOkConsultaRepresentacions(String titol, Date data) {
-
+        comprarEntradesView.mostraRepresentacions(domainController.obteRepresentacions(titol, data));
     }
 
     public void prOkConsultaOcupacio(String nomLocal, TipusSessio sessio, Integer nombEspectadors) {

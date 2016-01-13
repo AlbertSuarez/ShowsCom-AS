@@ -1,5 +1,6 @@
 package com.shows.as.presentation.views;
 
+import com.shows.as.domain.tupleTypes.TupleTypeRepresentacio;
 import com.shows.as.domain.utils.ComboItem;
 
 import javax.swing.*;
@@ -83,6 +84,13 @@ public class ComprarEntradesView extends JDialog {
         for (String s : espectacles) {
             espectaclesComboBox.addItem(new ComboItem(s, "Value " + i));
             ++i;
+        }
+    }
+
+    public void mostraRepresentacions(Set<TupleTypeRepresentacio> tupleTypeRepresentacios) {
+        if (tupleTypeRepresentacios.isEmpty()) {
+            // TODO Mostrar Error View
+            return;
         }
     }
 }
