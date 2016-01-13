@@ -21,6 +21,8 @@ public class Test {
         config.addAnnotatedClass(SeientEnRepresentacio.class);
         config.addAnnotatedClass(Sessio.class);
         config.addAnnotatedClass(Entrada.class);
+        config.addAnnotatedClass(Showscom.class);
+        config.addAnnotatedClass(Estrena.class);
 
         config.configure("hibernate.cfg.xml");
 
