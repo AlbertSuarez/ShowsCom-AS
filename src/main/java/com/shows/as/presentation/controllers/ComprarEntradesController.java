@@ -33,10 +33,12 @@ public class ComprarEntradesController {
         seientsView.setVisible(false);
         pagamentView.setVisible(false);
         errorView.setVisible(false);
+
+        prConsultaEspectacles();
     }
 
     public void prConsultaEspectacles() {
-        comprarEntradesView.mostraEspectacles(domainController.obteEspectacles());
+        //comprarEntradesView.mostraEspectacles(domainController.obteEspectacles());
     }
 
     public void prOkConsultaRepresentacions(String titol, Date data) {

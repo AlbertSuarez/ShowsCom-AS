@@ -75,6 +75,10 @@ public class ComprarEntradesView extends JDialog {
     }
 
     public void mostraEspectacles(Set<String> espectacles) {
+        if (espectacles.isEmpty()) {
+            // TODO Mostrar Error View
+            return;
+        }
         int i = 1;
         for (String s : espectacles) {
             espectaclesComboBox.addItem(new ComboItem(s, "Value " + i));
