@@ -1,35 +1,19 @@
 package com.shows.as.domain.classes;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Id;
+import java.io.Serializable;
 
-@Entity
-@Table(name = "estrena", schema = "public", catalog = "postgres")
-@IdClass(EstrenaPK.class)
-public class Estrena {
-// TODO Cal extends de Representacio
+public class EstrenaPK implements Serializable {
 
-    private Integer recàrrec;
     private String sessio;
     private String nomlocal;
 
     // -----------------------------------------------------------------------------------------------------------------
 
 
-    public Estrena(){
-    }
-
-    @Basic
-    @Column(name = "recàrrec", nullable = true)
-    public Integer getRecàrrec() {
-        return recàrrec;
-    }
-
-    public void setRecàrrec(Integer recàrrec) {
-        this.recàrrec = recàrrec;
-    }
-
-    @Id
     @Column(name = "sessio", nullable = false, length = 255)
+    @Id
     public String getSessio() {
         return sessio;
     }
@@ -38,8 +22,8 @@ public class Estrena {
         this.sessio = sessio;
     }
 
-    @Id
     @Column(name = "nomlocal", nullable = false, length = 255)
+    @Id
     public String getNomlocal() {
         return nomlocal;
     }
@@ -53,9 +37,8 @@ public class Estrena {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Estrena that = (Estrena) o;
+        EstrenaPK that = (EstrenaPK) o;
 
-        if (recàrrec != null ? !recàrrec.equals(that.recàrrec) : that.recàrrec != null) return false;
         if (sessio != null ? !sessio.equals(that.sessio) : that.sessio != null) return false;
         if (nomlocal != null ? !nomlocal.equals(that.nomlocal) : that.nomlocal != null) return false;
 
@@ -64,14 +47,9 @@ public class Estrena {
 
     @Override
     public int hashCode() {
-        int result = recàrrec != null ? recàrrec.hashCode() : 0;
-        result = 31 * result + (sessio != null ? sessio.hashCode() : 0);
+        int result = sessio != null ? sessio.hashCode() : 0;
         result = 31 * result + (nomlocal != null ? nomlocal.hashCode() : 0);
         return result;
     }
 
-    /** @Override */
-    public boolean esEstrena() {
-        return true;
-    }
 }

@@ -1,70 +1,81 @@
 package com.shows.as.domain.classes;
 
 import javax.persistence.Column;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import java.io.Serializable;
 
-/**
- * Created by Usuari on 12/01/2016.
- */
 public class SeientEnRepresentacioPK implements Serializable {
 
-    private int idEntrada;
-    private int fila;
-    private int columna;
-    private String nomLocal;
-   //private Sessio sessio;
+    private Integer fila;
+    private Integer columna;
+    private String nomlocal;
+    private String sessio;
+
+    // -----------------------------------------------------------------------------------------------------------------
 
 
-
-    /*public Sessio getSessio() {
-        return sessio;
-    }
-
-    public void setSessio(Sessio sessio) {
-        this.sessio = sessio;
-    }*/
-
-    public String getNomLocal() {
-        return nomLocal;
-    }
-
-    public void setNomLocal(String nomLocal) {
-        this.nomLocal = nomLocal;
-    }
-
-    public int getColumna() {
-        return columna;
-    }
-
-    public void setColumna(int columna) {
-        this.columna = columna;
-    }
-
-    public int getFila() {
+    @Column(name = "fila", nullable = false)
+    @Id
+    public Integer getFila() {
         return fila;
     }
 
-    public void setFila(int fila) {
+    public void setFila(Integer fila) {
         this.fila = fila;
     }
 
-    public int getIdEntrada() {
-        return idEntrada;
+    @Column(name = "columna", nullable = false)
+    @Id
+    public Integer getColumna() {
+        return columna;
     }
 
-    public void setIdEntrada(int idEntrada) {
-        this.idEntrada = idEntrada;
+    public void setColumna(Integer columna) {
+        this.columna = columna;
     }
 
-/*    public Representacio getRepresentacio() {
-        return representacio;
+    @Column(name = "nomlocal", nullable = false, length = 255)
+    @Id
+    public String getNomlocal() {
+        return nomlocal;
     }
 
-    public void setRepresentacio(Representacio representacio) {
-        this.representacio = representacio;
+    public void setNomlocal(String nomlocal) {
+        this.nomlocal = nomlocal;
     }
-*/
+
+    @Column(name = "sessio", nullable = false, length = 255)
+    @Id
+    public String getSessio() {
+        return sessio;
+    }
+
+    public void setSessio(String sessio) {
+        this.sessio = sessio;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        SeientEnRepresentacioPK that = (SeientEnRepresentacioPK) o;
+
+        if (fila != null ? !fila.equals(that.fila) : that.fila != null) return false;
+        if (columna != null ? !columna.equals(that.columna) : that.columna != null) return false;
+        if (nomlocal != null ? !nomlocal.equals(that.nomlocal) : that.nomlocal != null) return false;
+        if (sessio != null ? !sessio.equals(that.sessio) : that.sessio != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = fila != null ? fila.hashCode() : 0;
+        result = 31 * result + (columna != null ? columna.hashCode() : 0);
+        result = 31 * result + (nomlocal != null ? nomlocal.hashCode() : 0);
+        result = 31 * result + (sessio != null ? sessio.hashCode() : 0);
+        return result;
+    }
+
 }

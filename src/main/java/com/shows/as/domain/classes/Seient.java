@@ -1,58 +1,76 @@
 package com.shows.as.domain.classes;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.IdClass;
-import javax.persistence.Transient;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "seient", schema = "public", catalog = "postgres")
 @IdClass(SeientPK.class)
 public class Seient {
-    @Id
+
     private Integer fila;
-    @Id
     private Integer columna;
-    @Id
-    private String nomLocal;
-    @Transient
-    private Local local;
+    private String nomlocal;
+
+    // -----------------------------------------------------------------------------------------------------------------
+
 
     public Seient(){
 
     }
 
-    public Seient(int fila, int columna, Local local){
-        this.fila = fila;
-        this.columna = columna;
-        this.local = local;
-        this.nomLocal = local.getNom();
-    }
-
+    @Id
+    @Column(name = "fila", nullable = false)
     public Integer getFila() {
         return fila;
     }
 
+    public void setFila(Integer fila) {
+        this.fila = fila;
+    }
+
+    @Id
+    @Column(name = "columna", nullable = false)
     public Integer getColumna() {
         return columna;
     }
 
-    public String getNomLocal() {
-        return nomLocal;
+    public void setColumna(Integer columna) {
+        this.columna = columna;
     }
 
-    public void setNomLocal(String nomLocal) {
-        this.nomLocal = nomLocal;
+    @Id
+    @Column(name = "nomlocal", nullable = false, length = 255)
+    public String getNomlocal() {
+        return nomlocal;
+    }
+
+    public void setNomlocal(String nomlocal) {
+        this.nomlocal = nomlocal;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Seient that = (Seient) o;
+
+        if (fila != null ? !fila.equals(that.fila) : that.fila != null) return false;
+        if (columna != null ? !columna.equals(that.columna) : that.columna != null) return false;
+        if (nomlocal != null ? !nomlocal.equals(that.nomlocal) : that.nomlocal != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = fila != null ? fila.hashCode() : 0;
+        result = 31 * result + (columna != null ? columna.hashCode() : 0);
+        result = 31 * result + (nomlocal != null ? nomlocal.hashCode() : 0);
+        return result;
     }
 
     public void canviarEstat(Representacio r) {
-        // TODO this.SeientEnRepresentacio.canviarOcupat(r)
-    }
-
-    public Local getLocal() {
-        return local;
-    }
-
-    public void setLocal(Local local) {
-        this.local = local;
+        // TODO this.SeientEnRepresentacio.canviaOcupat(r)
     }
 }

@@ -73,6 +73,14 @@
             <systemPath>${basedir}/lib/jboss-transaction-api_1.1_spec-1.0.1.Final.jar</systemPath>
         </dependency>
 
+        <dependency>
+            <groupId>com.shows.as</groupId>
+            <artifactId>postgresql-9.1-901-1.jdbc4</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/lib/postgresql-9.1-901-1.jdbc4.jar</systemPath>
+        </dependency>
+
     </dependencies>
 
 </project>

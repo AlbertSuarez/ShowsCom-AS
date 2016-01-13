@@ -4,6 +4,6 @@ import com.shows.as.domain.enums.Moneda;
 
 public interface ICurrencyConvertorAdapter {
 
-    Float conversionRate(Moneda divisa, Moneda moneda);
+    Double conversionRate(Moneda divisa, Moneda moneda);
 
 }

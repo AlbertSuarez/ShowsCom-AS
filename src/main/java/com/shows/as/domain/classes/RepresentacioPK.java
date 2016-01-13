@@ -1,29 +1,54 @@
 package com.shows.as.domain.classes;
 
+import javax.persistence.Column;
+import javax.persistence.Id;
 import java.io.Serializable;
 
-/**
- * Created by Usuari on 12/01/2016.
- */
 public class RepresentacioPK implements Serializable {
 
-    private String nomSessio;
-    private String nomLocal;
+    private String sessio;
+    private String nomlocal;
+
+    // -----------------------------------------------------------------------------------------------------------------
 
 
-    public String getNomSessio() {
-        return nomSessio;
+    @Column(name = "sessio", nullable = false, length = 255)
+    @Id
+    public String getSessio() {
+        return sessio;
     }
 
-    public void setNomSessio(String nomSessio) {
-        this.nomSessio = nomSessio;
+    public void setSessio(String sessio) {
+        this.sessio = sessio;
     }
 
-    public String getNomLocal() {
-        return nomLocal;
+    @Column(name = "nomlocal", nullable = false, length = 255)
+    @Id
+    public String getNomlocal() {
+        return nomlocal;
     }
 
-    public void setNomLocal(String nomLocal) {
-        this.nomLocal = nomLocal;
+    public void setNomlocal(String nomlocal) {
+        this.nomlocal = nomlocal;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        RepresentacioPK that = (RepresentacioPK) o;
+
+        if (sessio != null ? !sessio.equals(that.sessio) : that.sessio != null) return false;
+        if (nomlocal != null ? !nomlocal.equals(that.nomlocal) : that.nomlocal != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = sessio != null ? sessio.hashCode() : 0;
+        result = 31 * result + (nomlocal != null ? nomlocal.hashCode() : 0);
+        return result;
     }
 }

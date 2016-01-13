@@ -10,10 +10,12 @@ import com.shows.as.domain.enums.TipusSessio;
 import com.shows.as.domain.factories.FactoriaCtrl;
 import com.shows.as.domain.factories.FactoriaServeis;
 import com.shows.as.domain.factories.FactoriaUseCase;
+import com.shows.as.domain.tupleTypes.TupleTypeFilaColumna;
 import com.shows.as.domain.tupleTypes.TupleTypeRepresentacio;
 import com.shows.as.domain.tupleTypes.TupleTypeSeleccioSeients;
 import com.shows.as.domain.utils.Utils;
 
+import java.sql.Date;
 import java.util.*;
 
 public class ComprarEntrada {
@@ -27,7 +29,7 @@ public class ComprarEntrada {
     private TipusSessio tSessio;
     private Integer nEspectadors;
     private Set<Seient> seients;
-    private Float preuTotal;
+    private Double preuTotal;
 
     /**
      * @exception IllegalStateException noHiHaEspectacles: No hi ha espectacles enregistrats al sistema.
@@ -73,11 +75,11 @@ public class ComprarEntrada {
      * @return result = fila i columna de tots els seients disponibles per a aquella representacio.
      * @post emmagatzemaDades: s'emmagatzema a la capa de domini el nomLocal, sessio i nombEspectadors.
      */
-    public Set<Seient> obteOcupacio(String nomLocal, TipusSessio sessio, Integer nombEspectadors) {
+    public Set<TupleTypeFilaColumna> obteOcupacio(String nomLocal, TipusSessio sessio, Integer nombEspectadors) {
         FactoriaUseCase factoriaUseCase = FactoriaUseCase.getInstance();
         ConsultarOcupacio consultarOcupacio = factoriaUseCase.getConsultarOcupacio();
 
-        Set<Seient> result = consultarOcupacio.consultaOcupacio(nomLocal, sessio, nombEspectadors);
+        Set<TupleTypeFilaColumna> result = consultarOcupacio.consultaOcupacio(nomLocal, sessio, nombEspectadors);
 
         this.nLocal = nomLocal;
         this.tSessio = sessio;
@@ -99,7 +101,7 @@ public class ComprarEntrada {
 
         Representacio r = ctrlRepresentacio.getRepresentacio(this.nLocal, this.tSessio);
 
-        Float p = r.getPreu();
+        Double p = r.getPreu();
         p += r.getRecarrec();
 
         for (Seient s : seients) {
@@ -123,14 +125,14 @@ public class ComprarEntrada {
      * @post el sistema crida a l'operacio <code>conversionRate(divisa, moneda):Float</code> del servei currency convertor per obtenir el canvi entre l'euro i la moneda.
      * @return result = preu (emmagatzemat a la capa de domini) * canvi obtingut al servei anterior.
      */
-    public Float obtePreuMoneda(Moneda moneda) {
+    public Double obtePreuMoneda(Moneda moneda) {
         FactoriaServeis factoriaServeis = FactoriaServeis.getInstance();
         ICurrencyConvertorAdapter iCurrencyConvertorAdapter = factoriaServeis.getiCurrencyConvertorAdapter();
 
         Showscom showscom = Showscom.getInstance();
         Moneda divisa = showscom.getDivisa();
 
-        Float conversio = iCurrencyConvertorAdapter.conversionRate(divisa, moneda);
+        Double conversio = iCurrencyConvertorAdapter.conversionRate(divisa, moneda);
 
         return this.preuTotal * conversio;
     }
@@ -153,7 +155,7 @@ public class ComprarEntrada {
         FactoriaServeis factoriaServeis = FactoriaServeis.getInstance();
         IBankServiceAdapter iBankServiceAdapter = factoriaServeis.getiBankServiceAdapter();
 
-        Date dt = Calendar.getInstance().getTime();
+        Date dt = (java.sql.Date) Calendar.getInstance().getTime();
 
         Boolean b = iBankServiceAdapter.autoritza(dni, codiB, numCompte, this.preuTotal, cb, nc, dt);
 

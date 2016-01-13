@@ -6,7 +6,7 @@ import com.shows.as.domain.enums.TipusSessio;
 import com.shows.as.domain.useCaseControllers.ComprarEntradesUseCaseController;
 import com.shows.as.presentation.views.*;
 
-import java.util.Date;
+import java.sql.Date;
 import java.util.Set;
 
 public class ComprarEntradesController {

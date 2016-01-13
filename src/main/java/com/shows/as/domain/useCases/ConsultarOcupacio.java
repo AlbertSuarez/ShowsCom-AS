@@ -5,6 +5,8 @@ import com.shows.as.domain.classes.Seient;
 import com.shows.as.domain.controllers.CtrlRepresentacio;
 import com.shows.as.domain.enums.TipusSessio;
 import com.shows.as.domain.factories.FactoriaCtrl;
+import com.shows.as.domain.tupleTypes.TupleTypeFilaColumna;
+
 import java.util.Set;
 
 public class ConsultarOcupacio {
@@ -18,7 +20,7 @@ public class ConsultarOcupacio {
      * @param nombEspectadors El nombre d'espectadors.
      * @return result = fila i columna de tots els seients disponibles per a aquella representacio.
      */
-    public Set<Seient> consultaOcupacio(String nomLocal, TipusSessio sessio, Integer nombEspectadors) {
+    public Set<TupleTypeFilaColumna> consultaOcupacio(String nomLocal, TipusSessio sessio, Integer nombEspectadors) {
         FactoriaCtrl factoriaCtrl = FactoriaCtrl.getInstance();
         CtrlRepresentacio ctrlRepresentacio = factoriaCtrl.getCtrlRepresentacio();
 

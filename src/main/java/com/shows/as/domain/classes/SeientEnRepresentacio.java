@@ -1,101 +1,128 @@
 package com.shows.as.domain.classes;
 
 import com.shows.as.domain.enums.Estat;
+import com.shows.as.domain.tupleTypes.TupleTypeFilaColumna;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 @Entity
+@Table(name = "seientenrepresentació", schema = "public", catalog = "postgres")
 @IdClass(SeientEnRepresentacioPK.class)
-public class SeientEnRepresentacio implements Serializable {
+public class SeientEnRepresentacio {
 
-    //@Column(columnDefinition = "enum('lliure','ocupat')") @Enumerated(EnumType.STRING)
-    //private Estat estat;
-    @Id
-    private int idEntrada;
-    @Id
-    private int fila;
-    @Id
-    private int columna;
-    @Id
-    private String nomLocal;
-    /*@Id
-    @Column(columnDefinition = "enum('mati','tarda','nit')") @Enumerated(EnumType.STRING)
-    private Sessio sessio;
-*/
-    @Transient
-    private Seient seient;
-    @Transient
-    private Representacio representacio;
+    private String estat;
+    private Integer fila;
+    private Integer columna;
+    private String nomlocal;
+    private String sessio;
+    private String identrada;
+
+    // -----------------------------------------------------------------------------------------------------------------
 
 
-    public SeientEnRepresentacio(){
+    public SeientEnRepresentacio() {
 
     }
 
-    public SeientEnRepresentacio(Seient seient, Representacio representacio, int idEntrada){
-        this.seient = seient;
-        this.idEntrada = idEntrada;
-        this.fila = seient.getFila();
-        this.columna = seient.getColumna();
-        this.nomLocal = seient.getNomLocal();
-        this.seient = seient;
-
-    }
-
-    public Seient getSeient() {
-        return seient;
-    }
-
-    public void canviarOcupat(Representacio r) {
-        // TODO if (this.Representacio == r) then estat = ocupat
-    }
-
-   /* public Estat getEstat() {
+    @Basic
+    @Column(name = "estat", nullable = true, length = 255)
+    public String getEstat() {
         return estat;
     }
 
-    public void setEstat(Estat estat) {
+    public void setEstat(String estat) {
         this.estat = estat;
-    }*/
-
-    public int getIdEntrada() {
-        return idEntrada;
     }
 
-    public void setIdEntrada(int idEntrada) {
-        this.idEntrada = idEntrada;
-    }
-
-    public int getFila() {
+    @Id
+    @Column(name = "fila", nullable = false)
+    public Integer getFila() {
         return fila;
     }
 
-    public void setFila(int fila) {
+    public void setFila(Integer fila) {
         this.fila = fila;
     }
 
-    public int getColumna() {
+    @Id
+    @Column(name = "columna", nullable = false)
+    public Integer getColumna() {
         return columna;
     }
 
-    public void setColumna(int columna) {
+    public void setColumna(Integer columna) {
         this.columna = columna;
     }
 
-    public String getNomLocal() {
-        return nomLocal;
+    @Id
+    @Column(name = "nomlocal", nullable = false, length = 255)
+    public String getNomlocal() {
+        return nomlocal;
     }
 
-    public void setNomLocal(String nomLocal) {
-        this.nomLocal = nomLocal;
+    public void setNomlocal(String nomlocal) {
+        this.nomlocal = nomlocal;
     }
 
-   /* public Sessio getSessio() {
+    @Id
+    @Column(name = "sessio", nullable = false, length = 255)
+    public String getSessio() {
         return sessio;
     }
 
-    public void setSessio(Sessio sessio) {
+    public void setSessio(String sessio) {
         this.sessio = sessio;
-    }*/
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        SeientEnRepresentacio that = (SeientEnRepresentacio) o;
+
+        if (estat != null ? !estat.equals(that.estat) : that.estat != null) return false;
+        if (fila != null ? !fila.equals(that.fila) : that.fila != null) return false;
+        if (columna != null ? !columna.equals(that.columna) : that.columna != null) return false;
+        if (nomlocal != null ? !nomlocal.equals(that.nomlocal) : that.nomlocal != null) return false;
+        if (sessio != null ? !sessio.equals(that.sessio) : that.sessio != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = estat != null ? estat.hashCode() : 0;
+        result = 31 * result + (fila != null ? fila.hashCode() : 0);
+        result = 31 * result + (columna != null ? columna.hashCode() : 0);
+        result = 31 * result + (nomlocal != null ? nomlocal.hashCode() : 0);
+        result = 31 * result + (sessio != null ? sessio.hashCode() : 0);
+        return result;
+    }
+
+    @Basic
+    @Column(name = "identrada", nullable = true)
+    public String getIdentrada() {
+        return identrada;
+    }
+
+    public void setIdentrada(String identrada) {
+        this.identrada = identrada;
+    }
+
+    public TupleTypeFilaColumna getSeient() {
+        TupleTypeFilaColumna s = new TupleTypeFilaColumna();
+        if (estat.equals(Estat.lliure.toString())) {
+            s.fila = this.fila;
+            s.columna = this.columna;
+        }
+        return s;
+    }
+
+    public void canviarOcupat(Representacio r) {
+        if (r.getNomlocal().equals(this.nomlocal) && r.getSessio().equals(this.sessio)) {
+            this.estat = Estat.ocupat.toString();
+        }
+    }
+
 }
