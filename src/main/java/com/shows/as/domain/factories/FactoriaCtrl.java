@@ -3,6 +3,9 @@ package com.shows.as.domain.factories;
 import com.shows.as.domain.controllers.CtrlEspectacle;
 import com.shows.as.domain.controllers.CtrlRepresentacio;
 import com.shows.as.domain.controllers.CtrlSeientEnRepresentacio;
+import com.shows.as.persistence.CtrlEspectacleDB;
+import com.shows.as.persistence.CtrlRepresentacioDB;
+import com.shows.as.persistence.CtrlSeientEnRepresentacioDB;
 
 public class FactoriaCtrl {
 
@@ -16,7 +19,9 @@ public class FactoriaCtrl {
     }
 
     private FactoriaCtrl() {
-
+        ctrlEspectacle = new CtrlEspectacleDB();
+        ctrlRepresentacio = new CtrlRepresentacioDB();
+        ctrlSeientEnRepresentacio = new CtrlSeientEnRepresentacioDB();
     }
 
     public CtrlEspectacle getCtrlEspectacle() {

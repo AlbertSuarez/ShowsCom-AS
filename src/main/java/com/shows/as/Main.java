@@ -9,7 +9,7 @@ import java.util.Date;
 public class Main {
 
     public static void main(String[] args) {
-        ComprarEntradesController cec = new ComprarEntradesController();
-        cec.run();
+        ComprarEntradesController comprarEntradesController = new ComprarEntradesController();
+        comprarEntradesController.run();
     }
 }
