@@ -36,7 +36,7 @@ public class ComprarEntradesController {
     }
 
     public void prConsultaEspectacles() {
-
+        comprarEntradesView.mostraEspectacles(domainController.obteEspectacles());
     }
 
     public void prOkConsultaRepresentacions(String titol, Date data) {

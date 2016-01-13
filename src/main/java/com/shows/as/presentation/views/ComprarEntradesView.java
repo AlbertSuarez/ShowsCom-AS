@@ -1,14 +1,17 @@
 package com.shows.as.presentation.views;
 
+import com.shows.as.domain.utils.ComboItem;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.Set;
 
 public class ComprarEntradesView extends JDialog {
     private JPanel contentPane;
     private JButton buttonOK;
     private JButton buttonCancel;
-    private JComboBox comboBox1;
+    private JComboBox espectaclesComboBox;
     private JComboBox comboBox2;
     private JComboBox comboBox3;
     private JComboBox comboBox4;
@@ -69,5 +72,13 @@ public class ComprarEntradesView extends JDialog {
         dialog.pack();
         dialog.setVisible(true);
         System.exit(0);
+    }
+
+    public void mostraEspectacles(Set<String> espectacles) {
+        int i = 1;
+        for (String s : espectacles) {
+            espectaclesComboBox.addItem(new ComboItem(s, "Value " + i));
+            ++i;
+        }
     }
 }
