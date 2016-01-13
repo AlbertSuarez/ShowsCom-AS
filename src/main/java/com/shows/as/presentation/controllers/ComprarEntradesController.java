@@ -20,8 +20,8 @@ public class ComprarEntradesController {
 
     public ComprarEntradesController() {
         domainController = new ComprarEntradesUseCaseController();
-        iniView = new IniView();
-        comprarEntradesView = new ComprarEntradesView();
+        iniView = new IniView(this);
+        comprarEntradesView = new ComprarEntradesView(this);
         seientsView = new SeientsView();
         pagamentView = new PagamentView();
         errorView = new ErrorView();
@@ -38,11 +38,14 @@ public class ComprarEntradesController {
     }
 
     public void prConsultaEspectacles() {
+        iniView.setVisible(false);
         //comprarEntradesView.mostraEspectacles(domainController.obteEspectacles());
+        comprarEntradesView.setVisible(true);
     }
 
     public void prOkConsultaRepresentacions(String titol, Date data) {
         comprarEntradesView.mostraRepresentacions(domainController.obteRepresentacions(titol, data));
+
     }
 
     public void prOkConsultaOcupacio(String nomLocal, TipusSessio sessio, Integer nombEspectadors) {
@@ -50,7 +53,8 @@ public class ComprarEntradesController {
     }
 
     public void prOkSeleccionarSeients(Set<Seient> seients) {
-
+        comprarEntradesView.setVisible(false);
+        seientsView.setVisible(true);
     }
 
     public void prCanviMoneda(Moneda moneda) {
@@ -62,11 +66,11 @@ public class ComprarEntradesController {
     }
 
     public void prAcabar() {
-
+        System.exit(0);
     }
 
     public void prCancel() {
-
+        System.exit(0);
     }
 
 }

@@ -1,5 +1,7 @@
 package com.shows.as.presentation.views;
 
+import com.shows.as.presentation.controllers.ComprarEntradesController;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -7,12 +9,14 @@ import java.awt.event.*;
 public class IniView extends JDialog {
     private JPanel contentPane;
     private JButton buttonOK;
+    private ComprarEntradesController controller;
 
-    public IniView() {
+    public IniView(ComprarEntradesController controller) {
+        this.controller = controller;
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         int width = (int)screenSize.getWidth();
         int height = (int)screenSize.getHeight();
-        setBounds((width/2)-225,(height/2)-150,450,300);
+        setBounds((width / 2) - 225, (height / 2) - 150, 450, 300);
         setResizable(false);
         setContentPane(contentPane);
         setModal(true);
@@ -42,7 +46,8 @@ public class IniView extends JDialog {
 
     private void onOK() {
         // add your code here
-        dispose();
+        controller.prConsultaEspectacles();
+        //dispose();
     }
 
     private void onCancel() {
@@ -51,9 +56,9 @@ public class IniView extends JDialog {
     }
 
     public static void main(String[] args) {
-        IniView dialog = new IniView();
-        dialog.pack();
-        dialog.setVisible(true);
-        System.exit(0);
+        //IniView dialog = new IniView();
+        //dialog.pack();
+        //dialog.setVisible(true);
+        //System.exit(0);
     }
 }

@@ -83,7 +83,9 @@
             <constraints>
               <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
-            <properties/>
+            <properties>
+              <enabled value="true"/>
+            </properties>
           </component>
           <component id="45b75" class="javax.swing.JLabel">
             <constraints>
@@ -113,7 +115,7 @@
             </constraints>
             <properties/>
           </component>
-          <component id="537c4" class="javax.swing.JLabel">
+          <component id="537c4" class="javax.swing.JLabel" binding="local">
             <constraints>
               <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -127,7 +129,7 @@
             </constraints>
             <properties/>
           </component>
-          <component id="92b48" class="javax.swing.JLabel">
+          <component id="92b48" class="javax.swing.JLabel" binding="sessio">
             <constraints>
               <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -135,7 +137,7 @@
               <text value="Sessió"/>
             </properties>
           </component>
-          <component id="ec30e" class="javax.swing.JLabel">
+          <component id="ec30e" class="javax.swing.JLabel" binding="entrades">
             <constraints>
               <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
