@@ -7,6 +7,13 @@ public class ComprarEntradesView extends JDialog {
     private JPanel contentPane;
     private JButton buttonOK;
     private JButton buttonCancel;
+    private JComboBox comboBox1;
+    private JComboBox comboBox2;
+    private JComboBox comboBox3;
+    private JComboBox comboBox4;
+    private JComboBox comboBox5;
+    private JComboBox comboBox6;
+    private JComboBox comboBox7;
 
     public ComprarEntradesView() {
         setContentPane(contentPane);
