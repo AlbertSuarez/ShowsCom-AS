@@ -4,7 +4,7 @@ import com.shows.as.domain.classes.Seient;
 import com.shows.as.domain.enums.Moneda;
 import com.shows.as.domain.enums.TipusSessio;
 import com.shows.as.domain.useCaseControllers.ComprarEntradesUseCaseController;
-import com.shows.as.presentation.views.ComprarEntradesView;
+import com.shows.as.presentation.views.IniView;
 
 import java.util.Date;
 import java.util.Set;
@@ -12,11 +12,11 @@ import java.util.Set;
 public class ComprarEntradesController {
 
     private ComprarEntradesUseCaseController domainController;
-    private ComprarEntradesView comprarEntradesView;
+    private IniView iniView;
 
     public ComprarEntradesController() {
         domainController = new ComprarEntradesUseCaseController();
-        comprarEntradesView = new ComprarEntradesView();
+        iniView = new IniView();
     }
 
     public void prConsultaEspectacles() {

@@ -3,12 +3,12 @@ package com.shows.as.presentation.views;
 import javax.swing.*;
 import java.awt.event.*;
 
-public class ComprarEntradesView extends JDialog {
+public class SeientsView extends JDialog {
     private JPanel contentPane;
     private JButton buttonOK;
     private JButton buttonCancel;
 
-    public ComprarEntradesView() {
+    public SeientsView() {
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
@@ -52,7 +52,7 @@ public class ComprarEntradesView extends JDialog {
     }
 
     public static void main(String[] args) {
-        ComprarEntradesView dialog = new ComprarEntradesView();
+        SeientsView dialog = new SeientsView();
         dialog.pack();
         dialog.setVisible(true);
         System.exit(0);
