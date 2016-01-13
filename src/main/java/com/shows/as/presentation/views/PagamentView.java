@@ -1,6 +1,10 @@
 package com.shows.as.presentation.views;
 
+import com.shows.as.domain.enums.Moneda;
+import com.shows.as.domain.utils.ComboItem;
+
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.*;
 
 public class PagamentView extends JDialog {
@@ -13,6 +17,11 @@ public class PagamentView extends JDialog {
     private JComboBox comboBox1;
 
     public PagamentView() {
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        int width = (int)screenSize.getWidth();
+        int height = (int)screenSize.getHeight();
+        setBounds((width/2)-225,(height/2)-150,450,300);
+        setResizable(false);
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
@@ -43,6 +52,12 @@ public class PagamentView extends JDialog {
                 onCancel();
             }
         }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+
+        comboBox1.addItem(new ComboItem(Moneda.EUR.toString(), "Value 1"));
+        comboBox1.addItem(new ComboItem(Moneda.USD.toString(), "Value 2"));
+        comboBox1.addItem(new ComboItem(Moneda.GBP.toString(), "Value 3"));
+
+
     }
 
     private void onOK() {

@@ -1,14 +1,19 @@
 package com.shows.as.presentation.views;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.*;
 
 public class ErrorView extends JDialog {
     private JPanel contentPane;
     private JButton buttonOK;
-    private JButton buttonCancel;
 
     public ErrorView() {
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        int width = (int)screenSize.getWidth();
+        int height = (int)screenSize.getHeight();
+        setBounds((width/2)-225,(height/2)-150,450,300);
+        setResizable(false);
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
@@ -16,12 +21,6 @@ public class ErrorView extends JDialog {
         buttonOK.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 onOK();
-            }
-        });
-
-        buttonCancel.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                onCancel();
             }
         });
 

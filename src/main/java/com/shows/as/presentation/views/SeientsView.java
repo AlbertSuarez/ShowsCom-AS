@@ -1,6 +1,7 @@
 package com.shows.as.presentation.views;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.*;
 
 public class SeientsView extends JDialog {
@@ -41,6 +42,11 @@ public class SeientsView extends JDialog {
     private JCheckBox checkBox32;
 
     public SeientsView() {
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        int width = (int)screenSize.getWidth();
+        int height = (int)screenSize.getHeight();
+        setBounds((width/2)-225,(height/2)-150,450,300);
+        setResizable(false);
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
