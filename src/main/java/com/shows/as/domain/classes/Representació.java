@@ -15,7 +15,7 @@ import java.util.Set;
 @Inheritance(strategy=InheritanceType.JOINED)
 public class Representació {
 
-    public static final String TAULA = "REPRESENTACIÓ";
+    public static final String TAULA = "Representació";
 
     private Double preu;
     private Date data;

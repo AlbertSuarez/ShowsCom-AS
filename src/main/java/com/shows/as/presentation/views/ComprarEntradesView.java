@@ -3,6 +3,7 @@ package com.shows.as.presentation.views;
 import com.shows.as.domain.enums.TipusSessio;
 import com.shows.as.domain.tupleTypes.TupleTypeRepresentacio;
 import com.shows.as.domain.utils.ComboItem;
+import com.shows.as.domain.utils.Utils;
 import com.shows.as.presentation.controllers.ComprarEntradesController;
 
 import javax.swing.*;
@@ -21,9 +22,7 @@ public class ComprarEntradesView extends JDialog {
     private JComboBox comboBox4;
     private JComboBox comboBox5;
     private JComboBox comboBox6;
-    private JComboBox comboBox7;
     private JLabel local;
-    private JLabel sessio;
     private JLabel entrades;
     private ComprarEntradesController controller;
 
@@ -41,9 +40,7 @@ public class ComprarEntradesView extends JDialog {
         //posem com a invisible tot lo de representació
         comboBox5.setVisible(false);
         comboBox6.setVisible(false);
-        comboBox7.setVisible(false);
         local.setVisible(false);
-        sessio.setVisible(false);
         entrades.setVisible(false);
 
         //inicialitzem dates i entrades
@@ -52,11 +49,10 @@ public class ComprarEntradesView extends JDialog {
         comboBox3.addItem("-");
         comboBox4.addItem("-");
         comboBox5.addItem("-");
-        comboBox7.addItem("-");
         for(int i = 1; i <= 31;++i){
             comboBox2.addItem(i);
             if(i < 13) comboBox3.addItem(i);
-            if(i < 10) comboBox6.addItem(i);
+            comboBox6.addItem(i);
         }
         comboBox4.addItem(2016);
 
@@ -109,24 +105,19 @@ public class ComprarEntradesView extends JDialog {
     }
 
     private void comprobaQualitatDades(){
-        //todo afegir tambe espectacle seleccionat
         if(comboBox2.getSelectedIndex() != 0 && comboBox3.getSelectedIndex()!= 0
-                && comboBox4.getSelectedIndex() != 0){
-            comboBox5.setVisible(true);
-            comboBox6.setVisible(true);
-            comboBox7.setVisible(true);
-            local.setVisible(true);
-            sessio.setVisible(true);
-            entrades.setVisible(true);
-            //controller.prOkConsultaRepresentacions();
+                && comboBox4.getSelectedIndex() != 0 && espectaclesComboBox.getSelectedIndex()!=0){
+            Integer day = (Integer) comboBox2.getSelectedItem();
+            Integer month = (Integer) comboBox3.getSelectedItem();
+            Integer year = (Integer) comboBox4.getSelectedItem();
+            controller.prOkConsultaRepresentacions((String)espectaclesComboBox.getSelectedItem(), Utils.createDate(day, month, year));
         }
     }
 
     private void onOK() {
-// add your code here
-        //todo afegir filtre per no fer ok si combos buits
-        controller.prOkConsultaOcupacio((String)comboBox5.getSelectedItem(),
-                (TipusSessio)comboBox7.getSelectedItem(),(Integer)comboBox6.getSelectedItem());
+        String word = (String)comboBox5.getSelectedItem();
+        String[] s = word.split(" : ");
+        controller.prOkConsultaOcupacio(s[0], s[1], (Integer)comboBox6.getSelectedItem());
         //controller.prOkSeleccionarSeients();
         dispose();
     }
@@ -149,11 +140,10 @@ public class ComprarEntradesView extends JDialog {
             // TODO Mostrar Error View
             return;
         }
-        int i = 1;
         for (String s : espectacles) {
-            espectaclesComboBox.addItem(new ComboItem(s, "Value " + i));
-            ++i;
+            espectaclesComboBox.addItem(s);
         }
+
     }
 
     public void mostraRepresentacions(Set<TupleTypeRepresentacio> tupleTypeRepresentacios) {
@@ -161,13 +151,12 @@ public class ComprarEntradesView extends JDialog {
             // TODO Mostrar Error View
             return;
         }
-        /*
-        Set<TupleTypeRepresentacio> t = new Set<TupleTypeRepresentacio>;
-
-        for (t : tupleTypeRepresentacios) {
-            Object[] array = t.toArray();
-            String sessio = t.get(array[2]);
-            comboBox7.addItem(new ComboItem(sessio, "Sessió " + sessio));
-        }*/
+        for (TupleTypeRepresentacio t : tupleTypeRepresentacios) {
+            comboBox5.addItem(t.nomLocal + " : " + t.nomSessio);
+        }
+        comboBox5.setVisible(true);
+        comboBox6.setVisible(true);
+        local.setVisible(true);
+        entrades.setVisible(true);
     }
 }

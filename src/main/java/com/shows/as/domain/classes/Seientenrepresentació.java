@@ -10,7 +10,7 @@ import javax.persistence.*;
 @IdClass(SeientenrepresentacióPK.class)
 public class Seientenrepresentació {
 
-    public static final String TAULA = "SEIENTENREPRESENTACIÓ";
+    public static final String TAULA = "Seientenrepresentació";
 
     private String estat;
     private int fila;

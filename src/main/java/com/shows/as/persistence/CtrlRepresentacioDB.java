@@ -7,6 +7,7 @@ import com.shows.as.domain.enums.TipusSessio;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
+import java.util.List;
 import java.util.Set;
 
 public class CtrlRepresentacioDB implements CtrlRepresentacio {
@@ -29,4 +30,17 @@ public class CtrlRepresentacioDB implements CtrlRepresentacio {
             throw new IllegalStateException("representacioNoExisteix");
         return res;
     }
+
+    public List<Representació> getRepresentacioTitol(String titol){
+        SessionFactory sf = HibernateUtils.getSessionFactory();
+        Session session = sf.openSession();
+
+        List<Representació> res = (List<Representació>) session.createQuery("from "+ Representació.TAULA+" where títolesp = "+titol).list();
+        session.close();
+        if (res == null)
+            throw new IllegalStateException("representacioNoExisteix");
+        return res;
+    }
+
+
 }

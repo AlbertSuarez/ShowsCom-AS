@@ -7,6 +7,7 @@ import javax.persistence.*;
 import java.util.Collection;
 import java.sql.Date;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -17,10 +18,7 @@ public class Espectacle {
 
     private String títol;
     private Integer participants;
-    private Collection<Representació> representacions;
-
-
-
+    private Set<Representació> representacions = new LinkedHashSet<Representació>();
 
     public Espectacle(){
 
@@ -29,11 +27,12 @@ public class Espectacle {
     public Espectacle(String a, int i) {
         this.títol = a;
         this.participants = i;
+
     }
 
     public Set<TupleTypeRepresentacio> obteRepresentacions(Date data){
         Set<TupleTypeRepresentacio> result = new LinkedHashSet<TupleTypeRepresentacio>();
-        for (Representació r : representacions){
+        for (Representació r : getRepresentacions()){
             if (Utils.sameDay(data, r.getData())) result.add(r.obteInfo());
         }
         return result;
@@ -79,12 +78,13 @@ public class Espectacle {
         return result;
     }
 
-    @OneToMany(mappedBy = "espectacleByTítolesp")
-    public Collection<Representació> getRepresentacions() {
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @JoinColumn(name = "títolesp",referencedColumnName = "títol")
+    public Set<Representació> getRepresentacions() {
         return representacions;
     }
 
-    public void setRepresentacions(Collection<Representació> representaciósByTítol) {
+    public void setRepresentacions(Set<Representació> representaciósByTítol) {
         this.representacions = representaciósByTítol;
     }
 }

@@ -29,25 +29,23 @@ public class ComprarEntradesController {
 
     public void run() {
         iniView.setVisible(true);
-        comprarEntradesView.setVisible(false);
+        comprarEntradesView.setVisible(true);
         seientsView.setVisible(false);
         pagamentView.setVisible(false);
         errorView.setVisible(false);
-
-        prConsultaEspectacles();
     }
 
     public void prConsultaEspectacles() {
+        comprarEntradesView.mostraEspectacles(domainController.obteEspectacles());
         iniView.setVisible(false);
-        //comprarEntradesView.mostraEspectacles(domainController.obteEspectacles());
-        comprarEntradesView.setVisible(true);
+        //comprarEntradesView.setVisible(true);
     }
 
     public void prOkConsultaRepresentacions(String titol, Date data) {
-        //comprarEntradesView.mostraRepresentacions(domainController.obteRepresentacions(titol, data));
+        comprarEntradesView.mostraRepresentacions(domainController.obteRepresentacions(titol, data));
     }
 
-    public void prOkConsultaOcupacio(String nomLocal, TipusSessio s, Integer nombEspectadors) {
+    public void prOkConsultaOcupacio(String nomLocal, String s, Integer nombEspectadors) {
         //comprarEntradesView.mostraSeients(domainController.obteOcupacio(nomLocal, sessio, nombEspectadors));
     }
 

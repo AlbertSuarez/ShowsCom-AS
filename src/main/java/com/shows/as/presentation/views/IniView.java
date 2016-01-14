@@ -45,9 +45,7 @@ public class IniView extends JDialog {
     }
 
     private void onOK() {
-        // add your code here
         controller.prConsultaEspectacles();
-        //dispose();
     }
 
     private void onCancel() {
