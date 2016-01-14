@@ -4,12 +4,12 @@ import javax.persistence.Column;
 import javax.persistence.Id;
 import java.io.Serializable;
 
+/*
+Implementació de la classe RepresentacioPK, primary key de la classe Representacio.
+ */
 public class RepresentacióPK implements Serializable {
     private String sessió;
     private String nomlocal;
-
-
-
 
     @Column(name = "sessió", nullable = false, insertable = true, updatable = true, length = 255)
     @Id

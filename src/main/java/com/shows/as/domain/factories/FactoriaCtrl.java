@@ -7,6 +7,9 @@ import com.shows.as.persistence.CtrlEspectacleDB;
 import com.shows.as.persistence.CtrlRepresentacioDB;
 import com.shows.as.persistence.CtrlSeientEnRepresentacioDB;
 
+/*
+Implementació de la classe FactoriaCtrl.
+ */
 public class FactoriaCtrl {
 
     private static FactoriaCtrl instance;

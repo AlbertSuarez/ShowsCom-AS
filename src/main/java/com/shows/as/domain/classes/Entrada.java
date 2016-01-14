@@ -4,7 +4,9 @@ import javax.persistence.*;
 import java.sql.Date;
 import java.util.Collection;
 import java.util.Set;
-
+/*
+Implementació de la classe Entrada del paquet domain.classes
+ */
 @Entity
 @Table(name = "entrada", schema = "public", catalog = "postgres")
 public class Entrada {

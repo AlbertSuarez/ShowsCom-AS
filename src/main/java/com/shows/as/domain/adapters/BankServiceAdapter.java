@@ -5,6 +5,9 @@ import com.shows.as.service.BankService;
 
 import java.util.Date;
 
+/*
+Classe adaptador del servei de pagament
+ */
 public class BankServiceAdapter implements IBankServiceAdapter {
 
     public Boolean autoritza(String dni, Integer codiB, String numCompte, Double preu, Integer codiBancShows, String numCompteShows, Date dAvui){

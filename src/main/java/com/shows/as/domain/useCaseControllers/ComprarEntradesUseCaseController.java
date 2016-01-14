@@ -11,6 +11,9 @@ import com.shows.as.domain.useCases.ComprarEntrada;
 import java.sql.Date;
 import java.util.Set;
 
+/*
+Implementació de la classe ComprarEntradesUseCaseController. Controlador del cas d'ús comprarEntrades
+ */
 public class ComprarEntradesUseCaseController {
 
     private ComprarEntrada comprarEntrada;

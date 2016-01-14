@@ -7,7 +7,9 @@ import com.shows.as.domain.factories.FactoriaCtrl;
 import com.shows.as.domain.tupleTypes.TupleTypeFilaColumna;
 
 import java.util.Set;
-
+/*
+Implementació del cas d'ús consultarOcupació
+ */
 public class ConsultarOcupacio {
 
     /**

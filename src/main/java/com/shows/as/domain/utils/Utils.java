@@ -4,6 +4,9 @@ import java.util.Calendar;
 import java.sql.Date;
 import java.util.Random;
 
+/*
+Implementacio de la classe Utils. Aquesta classe conté diferents mètodes necessàris per l'execució.
+ */
 public class Utils {
 
     private final static Random generator = new Random();

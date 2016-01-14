@@ -9,6 +9,7 @@ public class ServiceLocator {
     private CurrencyService currencyService;
     private BankService bankService;
 
+    /** Implementació del patró Singleton. **/
     public static ServiceLocator getInstance() {
         if (instance == null) {
             instance = new ServiceLocator();

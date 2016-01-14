@@ -4,6 +4,9 @@ import com.shows.as.domain.useCases.ComprarEntrada;
 import com.shows.as.domain.useCases.ConsultarOcupacio;
 import com.shows.as.domain.useCases.ConsultarRepresentacions;
 
+/*
+Implementació de la classe FactoriaUseCase
+ */
 public class FactoriaUseCase {
 
     private static FactoriaUseCase instance;

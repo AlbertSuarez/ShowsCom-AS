@@ -4,7 +4,9 @@ import com.shows.as.domain.adapters.BankServiceAdapter;
 import com.shows.as.domain.adapters.CurrencyConvertorAdapter;
 import com.shows.as.domain.adapters.IBankServiceAdapter;
 import com.shows.as.domain.adapters.ICurrencyConvertorAdapter;
-
+/*
+Implementació de la classe FactoriaServeis
+ */
 public class FactoriaServeis {
 
     private static FactoriaServeis instance;

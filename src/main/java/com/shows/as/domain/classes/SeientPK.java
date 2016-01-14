@@ -3,7 +3,9 @@ package com.shows.as.domain.classes;
 import javax.persistence.Column;
 import javax.persistence.Id;
 import java.io.Serializable;
-
+/*
+Implementació de la classe SeientPK, primary key de la classe Seient.
+ */
 public class SeientPK implements Serializable {
 
     private int fila;

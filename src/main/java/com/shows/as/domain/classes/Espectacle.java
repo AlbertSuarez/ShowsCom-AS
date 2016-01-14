@@ -9,7 +9,9 @@ import java.sql.Date;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
-
+/*
+Implementació de la classe Espectacle del paquet domain.classes
+ */
 @Entity
 @Table(name = "espectacle", schema = "public", catalog = "postgres")
 public class Espectacle {

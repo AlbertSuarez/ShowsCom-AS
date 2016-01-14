@@ -2,7 +2,9 @@ package com.shows.as.domain.classes;
 
 import javax.persistence.*;
 import java.sql.Date;
-
+/*
+Implementació de la classe Estrena del paquet domain.classes
+ */
 @Entity
 @Table(name = "estrena", schema = "public", catalog = "postgres")
 //@IdClass(EstrenaPK.class)

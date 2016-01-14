@@ -2,7 +2,9 @@ package com.shows.as.domain.classes;
 
 import javax.persistence.*;
 import java.util.Collection;
-
+/*
+Implementació de la classe Local del paquet domain.classes
+ */
 @Entity
 @Table(name = "local", schema = "public", catalog = "postgres")
 public class Local {

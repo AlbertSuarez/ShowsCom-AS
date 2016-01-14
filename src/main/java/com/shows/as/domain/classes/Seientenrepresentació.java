@@ -4,7 +4,9 @@ import com.shows.as.domain.enums.Estat;
 import com.shows.as.domain.tupleTypes.TupleTypeFilaColumna;
 
 import javax.persistence.*;
-
+/*
+Implementació de la classe SeientEnRepresentacio del paquet domain.classes
+ */
 @Entity
 @Table(name = "seientenrepresentació", schema = "public", catalog = "postgres")
 @IdClass(SeientenrepresentacióPK.class)

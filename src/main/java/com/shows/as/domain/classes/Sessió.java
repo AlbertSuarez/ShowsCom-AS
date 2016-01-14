@@ -2,7 +2,9 @@ package com.shows.as.domain.classes;
 
 import javax.persistence.*;
 import java.util.Collection;
-
+/*
+Implementació de la classe Sessio del paquet domain.classes
+ */
 @Entity
 @Table(name = "sessió", schema = "public", catalog = "postgres")
 public class Sessió {

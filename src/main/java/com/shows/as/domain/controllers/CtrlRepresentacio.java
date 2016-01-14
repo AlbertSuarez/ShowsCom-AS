@@ -5,7 +5,9 @@ import com.shows.as.domain.enums.TipusSessio;
 
 import java.util.List;
 import java.util.Set;
-
+/*
+Implementacio de la classe CtrlSeientEnRepresentacio del paquet domain.controllers
+ */
 public interface CtrlRepresentacio {
 
     Set<Representació> getAll();

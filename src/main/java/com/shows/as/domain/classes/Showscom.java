@@ -5,7 +5,9 @@ import com.shows.as.domain.enums.Moneda;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Transient;
-
+/*
+Implementació de la classe Showscom del paquet domain.classes. Aquesta classe és singleton.
+ */
 public class Showscom {
 
     private static Showscom instance;

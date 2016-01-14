@@ -3,7 +3,9 @@ package com.shows.as.domain.classes;
 import javax.persistence.Column;
 import javax.persistence.Id;
 import java.io.Serializable;
-
+/*
+Implementació de la classe EstrenaPK, primary key de la classe Estrena.
+ */
 public class EstrenaPK implements Serializable {
 
     private String sessió;

@@ -8,7 +8,9 @@ import java.sql.Date;
 import java.util.Collection;
 import java.util.LinkedHashSet;
 import java.util.Set;
-
+/*
+Implementació de la classe Representació del paquet domain.classes
+ */
 @Entity
 @Table(name = "representació", schema = "public", catalog = "postgres")
 @IdClass(RepresentacióPK.class)

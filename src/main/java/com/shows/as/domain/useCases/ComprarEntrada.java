@@ -17,7 +17,9 @@ import com.shows.as.domain.utils.Utils;
 
 import java.sql.Date;
 import java.util.*;
-
+/*
+Implementació del cas d'ús comprarEntrada
+ */
 public class ComprarEntrada {
 
     public static final String noHiHaRepresentacions = "No Hi Ha Representacions per l'espectacle i data";

@@ -4,7 +4,9 @@ import javax.persistence.Column;
 import javax.persistence.Id;
 import java.io.Serializable;
 
-
+/*
+Implementació de la classe SeientenrepresentacioPK, primary key de la classe SeientEnRepresentacio.
+ */
 public class SeientenrepresentacióPK implements Serializable {
 
     private int fila;

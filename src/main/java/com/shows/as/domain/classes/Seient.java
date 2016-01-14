@@ -2,7 +2,9 @@ package com.shows.as.domain.classes;
 
 import javax.persistence.*;
 import java.util.Collection;
-
+/*
+Implementació de la classe Seient del paquet domain.classes
+ */
 @Entity
 @Table(name = "seient", schema = "public", catalog = "postgres")
 @IdClass(SeientPK.class)

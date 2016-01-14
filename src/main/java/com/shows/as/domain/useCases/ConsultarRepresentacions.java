@@ -9,6 +9,9 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
+/*
+Implementació del cas d'ús consultarRepresentacions
+ */
 public class ConsultarRepresentacions {
 
     public static final String noHiHaEspectacles = "No hi ha espectacles enregistrats al sistema";
