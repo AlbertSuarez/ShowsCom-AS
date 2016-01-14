@@ -72,7 +72,7 @@ public class Seient {
     }
 
     @ManyToOne
-    @JoinColumn(name = "nomlocal", referencedColumnName = "nom", nullable = false)
+    @JoinColumn(name = "nomlocal", referencedColumnName = "nom", nullable = false,insertable = false, updatable = false)
     public Local getLocalByNomlocal() {
         return localByNomlocal;
     }

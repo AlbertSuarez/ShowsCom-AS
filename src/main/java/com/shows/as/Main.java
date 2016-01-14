@@ -1,8 +1,6 @@
 package com.shows.as;
 
-
 import com.shows.as.presentation.controllers.ComprarEntradesController;
-
 
 public class Main {
 
@@ -13,6 +11,8 @@ public class Main {
     }
 
     private static void carregaBaseDadesCas1() {
+
+        //HibernateUtils.save(new Espectacle("a",10));
 
     }
 }

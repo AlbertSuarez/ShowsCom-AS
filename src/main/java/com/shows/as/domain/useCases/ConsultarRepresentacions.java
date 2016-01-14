@@ -6,6 +6,7 @@ import com.shows.as.domain.factories.FactoriaCtrl;
 import com.shows.as.domain.tupleTypes.TupleTypeRepresentacio;
 import java.util.Date;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 
 public class ConsultarRepresentacions {
@@ -19,7 +20,7 @@ public class ConsultarRepresentacions {
     public Set<String> consultaEspectacles() {
         FactoriaCtrl factoriaCtrl = FactoriaCtrl.getInstance();
         CtrlEspectacle ctrlEspectacle = factoriaCtrl.getCtrlEspectacle();
-        Set<Espectacle> espectacles = ctrlEspectacle.getAll();
+        List<Espectacle> espectacles = ctrlEspectacle.getAll();
 
         if (espectacles.size() == 0) throw new IllegalStateException(noHiHaEspectacles);
 

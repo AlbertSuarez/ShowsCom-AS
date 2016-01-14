@@ -4,16 +4,14 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "estrena", schema = "public", catalog = "postgres")
-@IdClass(EstrenaPK.class)
+//@IdClass(EstrenaPK.class)
 @PrimaryKeyJoinColumns({@PrimaryKeyJoinColumn(name = "nomlocal", referencedColumnName = "sessió"), @PrimaryKeyJoinColumn(name = "sessió", referencedColumnName = "nomlocal")})
 public class Estrena extends Representació {
 
     private Integer recàrrec;
-    private String sessió;
-    private String nomlocal;
+    //private String sessió;
+    //private String nomlocal;
     private Representació representació;
-
-
 
     public Estrena() {
 
@@ -29,7 +27,7 @@ public class Estrena extends Representació {
         this.recàrrec = recàrrec;
     }
 
-    @Id
+    /*@Id
     @Column(name = "sessió", nullable = false, insertable = true, updatable = true, length = 255)
     public String getSessió() {
         return sessió;
@@ -70,7 +68,7 @@ public class Estrena extends Representació {
         result = 31 * result + (nomlocal != null ? nomlocal.hashCode() : 0);
         return result;
     }
-
+*/
     @OneToOne
     @JoinColumns({@JoinColumn(name = "sessió", referencedColumnName = "sessió", nullable = false), @JoinColumn(name = "nomlocal", referencedColumnName = "nomlocal", nullable = false)})
     public Representació getRepresentació() {

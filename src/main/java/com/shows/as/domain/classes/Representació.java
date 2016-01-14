@@ -68,7 +68,7 @@ public class Representació {
     }
 
     @Id
-    @Column(name = "sessió", nullable = false, insertable = true, updatable = true, length = 255)
+    //@Column(name = "sessió", nullable = false, insertable = true, updatable = true, length = 255)
     public String getSessió() {
         return sessió;
     }
@@ -78,7 +78,7 @@ public class Representació {
     }
 
     @Id
-    @Column(name = "nomlocal", nullable = false, insertable = true, updatable = true, length = 255)
+    //@Column(name = "nomlocal", nullable = false, insertable = true, updatable = true, length = 255)
     public String getNomlocal() {
         return nomlocal;
     }
@@ -88,7 +88,7 @@ public class Representació {
     }
 
     @Basic
-    @Column(name = "títolesp", nullable = true, insertable = true, updatable = true, length = 255)
+    //@Column(name = "títolesp", nullable = true, insertable = true, updatable = true, length = 255)
     public String getTítolesp() {
         return títolesp;
     }
@@ -108,9 +108,9 @@ public class Representació {
         if (data != null ? !data.equals(that.data) : that.data != null) return false;
         if (nombreseientslliures != null ? !nombreseientslliures.equals(that.nombreseientslliures) : that.nombreseientslliures != null)
             return false;
-        if (sessió != null ? !sessió.equals(that.sessió) : that.sessió != null) return false;
-        if (nomlocal != null ? !nomlocal.equals(that.nomlocal) : that.nomlocal != null) return false;
-        if (títolesp != null ? !títolesp.equals(that.títolesp) : that.títolesp != null) return false;
+        //if (sessió != null ? !sessió.equals(that.sessió) : that.sessió != null) return false;
+        //if (nomlocal != null ? !nomlocal.equals(that.nomlocal) : that.nomlocal != null) return false;
+        //if (títolesp != null ? !títolesp.equals(that.títolesp) : that.títolesp != null) return false;
 
         return true;
     }
@@ -126,10 +126,10 @@ public class Representació {
         return result;
     }*/
 
-    @Override
+    /*@Override
     public int hashCode() {
         return hashCode(this.nomlocal, this.sessió);
-    }
+    }*/
 
     public static int hashCode(String nomlocal, String sessió){
         String sSurrogate =   String.format("%60s", nomlocal)           // 60 chars
@@ -157,7 +157,7 @@ public class Representació {
     }
 
     @ManyToOne
-    @JoinColumn(name = "títolesp", referencedColumnName = "títol")
+    @JoinColumn(name = "títolesp", referencedColumnName = "títol",insertable = false, updatable = false)
     public Espectacle getEspectacleByTítolesp() {
         return espectacleByTítolesp;
     }
@@ -167,7 +167,7 @@ public class Representació {
     }
 
     @ManyToOne
-    @JoinColumn(name = "nomlocal", referencedColumnName = "nom", nullable = false)
+    @JoinColumn(name = "nomlocal", referencedColumnName = "nom", nullable = false,insertable = false, updatable = false)
     public Local getLocalByNomlocal() {
         return localByNomlocal;
     }
@@ -177,7 +177,7 @@ public class Representació {
     }
 
     @ManyToOne
-    @JoinColumn(name = "sessió", referencedColumnName = "sessió", nullable = false)
+    @JoinColumn(name = "sessió", referencedColumnName = "sessió", nullable = false,insertable = false, updatable = false)
     public Sessió getSessióBySessió() {
         return sessióBySessió;
     }

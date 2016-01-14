@@ -22,8 +22,6 @@ public class Seientenrepresentació {
     private Representació representació;
     private Seient seient;
 
-
-
     public Seientenrepresentació() {
 
     }
@@ -131,7 +129,7 @@ public class Seientenrepresentació {
     }
 
     @ManyToOne
-    @JoinColumn(name = "identrada", referencedColumnName = "identificador")
+    @JoinColumn(name = "identrada", referencedColumnName = "identificador",insertable = false, updatable = false)
     public Entrada getEntradaByIdentrada() {
         return entradaByIdentrada;
     }
@@ -141,7 +139,7 @@ public class Seientenrepresentació {
     }
 
     @ManyToOne
-    @JoinColumns({@JoinColumn(name = "sessió", referencedColumnName = "sessió", nullable = false), @JoinColumn(name = "nomlocal", referencedColumnName = "nomlocal", nullable = false)})
+    @JoinColumns({@JoinColumn(name = "sessió", referencedColumnName = "sessió", nullable = false,insertable = false, updatable = false), @JoinColumn(name = "nomlocal", referencedColumnName = "nomlocal", nullable = false,insertable = false, updatable = false)})
     public Representació getRepresentació() {
         return representació;
     }
@@ -151,7 +149,7 @@ public class Seientenrepresentació {
     }
 
     @ManyToOne
-    @JoinColumns({@JoinColumn(name = "nomlocal", referencedColumnName = "nomlocal", nullable = false), @JoinColumn(name = "fila", referencedColumnName = "fila", nullable = false), @JoinColumn(name = "columna", referencedColumnName = "columna", nullable = false)})
+    @JoinColumns({@JoinColumn(name = "nomlocal", referencedColumnName = "nomlocal", nullable = false,insertable = false, updatable = false), @JoinColumn(name = "fila", referencedColumnName = "fila", nullable = false,insertable = false, updatable = false), @JoinColumn(name = "columna", referencedColumnName = "columna", nullable = false,insertable = false, updatable = false)})
     public Seient getSeient() {
         return seient;
     }

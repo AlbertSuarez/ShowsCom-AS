@@ -14,8 +14,8 @@ public class Entrada {
     private Integer nombreespectadors;
     private Date data;
     private Double preu;
-    private String sessió;
-    private String nomlocal;
+    //private String sessió;
+    //private String nomlocal;
     private Representació representació;
     private Collection<Seientenrepresentació> seients;
 
@@ -89,9 +89,7 @@ public class Entrada {
         this.preu = preu;
     }
 
-    @Basic
-    @Column(name = "sessió", nullable = true, insertable = true, updatable = true, length = 255)
-    public String getSessió() {
+    /*public String getSessió() {
         return sessió;
     }
 
@@ -99,15 +97,13 @@ public class Entrada {
         this.sessió = sessió;
     }
 
-    @Basic
-    @Column(name = "nomlocal", nullable = true, insertable = true, updatable = true, length = 255)
     public String getNomlocal() {
         return nomlocal;
     }
 
     public void setNomlocal(String nomlocal) {
         this.nomlocal = nomlocal;
-    }
+    }*/
 
     @Override
     public boolean equals(Object o) {
@@ -123,8 +119,8 @@ public class Entrada {
             return false;
         if (data != null ? !data.equals(that.data) : that.data != null) return false;
         if (preu != null ? !preu.equals(that.preu) : that.preu != null) return false;
-        if (sessió != null ? !sessió.equals(that.sessió) : that.sessió != null) return false;
-        if (nomlocal != null ? !nomlocal.equals(that.nomlocal) : that.nomlocal != null) return false;
+        //if (sessió != null ? !sessió.equals(that.sessió) : that.sessió != null) return false;
+        //if (nomlocal != null ? !nomlocal.equals(that.nomlocal) : that.nomlocal != null) return false;
 
         return true;
     }
@@ -136,8 +132,8 @@ public class Entrada {
         result = 31 * result + (nombreespectadors != null ? nombreespectadors.hashCode() : 0);
         result = 31 * result + (data != null ? data.hashCode() : 0);
         result = 31 * result + (preu != null ? preu.hashCode() : 0);
-        result = 31 * result + (sessió != null ? sessió.hashCode() : 0);
-        result = 31 * result + (nomlocal != null ? nomlocal.hashCode() : 0);
+        //result = 31 * result + (sessió != null ? sessió.hashCode() : 0);
+        //result = 31 * result + (nomlocal != null ? nomlocal.hashCode() : 0);
         return result;
     }
 

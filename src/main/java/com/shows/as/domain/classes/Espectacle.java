@@ -13,7 +13,7 @@ import java.util.Set;
 @Table(name = "espectacle", schema = "public", catalog = "postgres")
 public class Espectacle {
 
-    public static final String TAULA = "ESPECTACLE";
+    public static final String TAULA = "Espectacle";
 
     private String títol;
     private Integer participants;
@@ -24,6 +24,11 @@ public class Espectacle {
 
     public Espectacle(){
 
+    }
+
+    public Espectacle(String a, int i) {
+        this.títol = a;
+        this.participants = i;
     }
 
     public Set<TupleTypeRepresentacio> obteRepresentacions(Date data){
