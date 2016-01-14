@@ -176,6 +176,7 @@ public class ComprarEntrada {
 
         Entrada e = new Entrada(id, dni, this.nEspectadors, dt, this.preuTotal);
         e.associa(r, seientRep);
+        // TODO insert e
     }
 
 }
