@@ -28,7 +28,7 @@ public class ComprarEntradesUseCaseController {
         return comprarEntrada.obteRepresentacions(titol, data);
     }
 
-    public Set<TupleTypeFilaColumna> obteOcupacio(String nomLocal, TipusSessio sessio, Integer nombEspectadors) {
+    public Set<TupleTypeFilaColumna> obteOcupacio(String nomLocal, String sessio, Integer nombEspectadors) {
         return comprarEntrada.obteOcupacio(nomLocal, sessio, nombEspectadors);
     }
 

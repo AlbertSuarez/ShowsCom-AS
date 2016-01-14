@@ -15,7 +15,6 @@ public class Estrena extends Representació {
 
 
 
-
     public Estrena() {
 
     }

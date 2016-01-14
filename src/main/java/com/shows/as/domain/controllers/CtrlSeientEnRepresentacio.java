@@ -9,6 +9,6 @@ public interface CtrlSeientEnRepresentacio {
 
     Set<Seientenrepresentació> getAll();
 
-    Seientenrepresentació getSeientEnRepresentacio(String nomLocal, TipusSessio sessio, Integer fila, Integer columna);
+    Seientenrepresentació getSeientEnRepresentacio(String nomLocal, String sessio, Integer fila, Integer columna);
 
 }

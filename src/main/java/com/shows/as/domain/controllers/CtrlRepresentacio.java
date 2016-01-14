@@ -9,6 +9,6 @@ public interface CtrlRepresentacio {
 
     Set<Representació> getAll();
 
-    Representació getRepresentacio(String nomLocal, TipusSessio sessio);
+    Representació getRepresentacio(String nomLocal, String sessio);
 
 }

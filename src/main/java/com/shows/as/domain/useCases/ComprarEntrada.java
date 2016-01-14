@@ -26,7 +26,7 @@ public class ComprarEntrada {
     private String titolEsp;
     private Date dataRep;
     private String nLocal;
-    private TipusSessio tSessio;
+    private String tSessio;
     private Integer nEspectadors;
     private Set<Seient> seients;
     private Double preuTotal;
@@ -75,7 +75,7 @@ public class ComprarEntrada {
      * @return result = fila i columna de tots els seients disponibles per a aquella representacio.
      * @post emmagatzemaDades: s'emmagatzema a la capa de domini el nomLocal, sessio i nombEspectadors.
      */
-    public Set<TupleTypeFilaColumna> obteOcupacio(String nomLocal, TipusSessio sessio, Integer nombEspectadors) {
+    public Set<TupleTypeFilaColumna> obteOcupacio(String nomLocal, String sessio, Integer nombEspectadors) {
         FactoriaUseCase factoriaUseCase = FactoriaUseCase.getInstance();
         ConsultarOcupacio consultarOcupacio = factoriaUseCase.getConsultarOcupacio();
 

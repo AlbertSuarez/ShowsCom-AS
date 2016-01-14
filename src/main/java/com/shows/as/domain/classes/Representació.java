@@ -15,6 +15,8 @@ import java.util.Set;
 @Inheritance(strategy=InheritanceType.JOINED)
 public class Representació {
 
+    public static final String TAULA = "REPRESENTACIÓ";
+
     private Double preu;
     private Date data;
     private Integer nombreseientslliures;
@@ -113,7 +115,7 @@ public class Representació {
         return true;
     }
 
-    @Override
+    /*@Override
     public int hashCode() {
         int result = preu != null ? preu.hashCode() : 0;
         result = 31 * result + (data != null ? data.hashCode() : 0);
@@ -122,6 +124,18 @@ public class Representació {
         result = 31 * result + (nomlocal != null ? nomlocal.hashCode() : 0);
         result = 31 * result + (títolesp != null ? títolesp.hashCode() : 0);
         return result;
+    }*/
+
+    @Override
+    public int hashCode() {
+        return hashCode(this.nomlocal, this.sessió);
+    }
+
+    public static int hashCode(String nomlocal, String sessió){
+        String sSurrogate =   String.format("%60s", nomlocal)           // 60 chars
+                            + String.format("%60s", sessió);           // 60 chars
+
+        return sSurrogate.hashCode();
     }
 
     @OneToMany(mappedBy = "representació")
@@ -186,14 +200,13 @@ public class Representació {
     }
 
     public void associaEntrada(Entrada entrada) {
-        // TODO this.entrada.add(entrada)
+        this.entradas.add(entrada);
     }
 
     public Set<TupleTypeFilaColumna> getSeients(Integer nombEspectadors) {
         if (this.nombreseientslliures < nombEspectadors) throw new IllegalStateException("seientsNoDisp");
         Set<TupleTypeFilaColumna> seients = new LinkedHashSet<TupleTypeFilaColumna>();
         for (Seientenrepresentació sr : this.seients) {
-            // TODO obteSeientFilaColumna
             seients.add(sr.obteSeientFilaColumna());
         }
         return seients;

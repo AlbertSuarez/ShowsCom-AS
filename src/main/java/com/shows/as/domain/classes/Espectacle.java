@@ -12,6 +12,9 @@ import java.util.Set;
 @Entity
 @Table(name = "espectacle", schema = "public", catalog = "postgres")
 public class Espectacle {
+
+    public static final String TAULA = "ESPECTACLE";
+
     private String títol;
     private Integer participants;
     private Collection<Representació> representacions;

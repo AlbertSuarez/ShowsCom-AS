@@ -9,6 +9,9 @@ import javax.persistence.*;
 @Table(name = "seientenrepresentació", schema = "public", catalog = "postgres")
 @IdClass(SeientenrepresentacióPK.class)
 public class Seientenrepresentació {
+
+    public static final String TAULA = "SEIENTENREPRESENTACIÓ";
+
     private String estat;
     private int fila;
     private int columna;
@@ -102,7 +105,7 @@ public class Seientenrepresentació {
         return true;
     }
 
-    @Override
+    /*@Override
     public int hashCode() {
         int result = estat != null ? estat.hashCode() : 0;
         result = 31 * result + fila;
@@ -111,6 +114,20 @@ public class Seientenrepresentació {
         result = 31 * result + (sessió != null ? sessió.hashCode() : 0);
         result = 31 * result + (identrada != null ? identrada.hashCode() : 0);
         return result;
+    }*/
+
+    @Override
+    public int hashCode() {
+        return hashCode(this.nomlocal, this.sessió, this.fila, this.columna);
+    }
+
+    public static int hashCode(String nomlocal, String sessió, Integer fila, Integer columna){
+        String sSurrogate =   String.format("%60s", nomlocal)           // 60 chars
+                            + String.format("%60s", sessió)             // 60 chars
+                            + String.format("%60s", fila)               // 60 chars
+                            + String.format("%60s", columna);           // 60 chars
+
+        return sSurrogate.hashCode();
     }
 
     @ManyToOne
@@ -152,7 +169,8 @@ public class Seientenrepresentació {
         return s;
     }
 
-    public void canviarOcupat(Representació r) {        if (r.getNomlocal().equals(this.nomlocal) && r.getSessió().equals(this.sessió)) {
+    public void canviarOcupat(Representació r) {
+        if (r.getNomlocal().equals(this.nomlocal) && r.getSessió().equals(this.sessió)) {
             this.estat = Estat.ocupat.toString();
         }
     }

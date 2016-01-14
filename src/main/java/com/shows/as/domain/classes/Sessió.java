@@ -10,6 +10,11 @@ public class Sessió {
     private String sessió;
     private Collection<Representació> representaciósBySessió;
 
+
+    public Sessió() {
+
+    }
+
     @Id
     @Column(name = "sessió", nullable = false, insertable = true, updatable = true, length = 255)
     public String getSessió() {

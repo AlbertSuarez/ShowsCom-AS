@@ -19,7 +19,7 @@ public class ConsultarOcupacio {
      * @param nombEspectadors El nombre d'espectadors.
      * @return result = fila i columna de tots els seients disponibles per a aquella representacio.
      */
-    public Set<TupleTypeFilaColumna> consultaOcupacio(String nomLocal, TipusSessio sessio, Integer nombEspectadors) {
+    public Set<TupleTypeFilaColumna> consultaOcupacio(String nomLocal, String sessio, Integer nombEspectadors) {
         FactoriaCtrl factoriaCtrl = FactoriaCtrl.getInstance();
         CtrlRepresentacio ctrlRepresentacio = factoriaCtrl.getCtrlRepresentacio();
 

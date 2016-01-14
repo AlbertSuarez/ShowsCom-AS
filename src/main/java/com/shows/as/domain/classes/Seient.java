@@ -14,6 +14,11 @@ public class Seient {
     private Local localByNomlocal;
     private Collection<Seientenrepresentació> seientenrepresentaciós;
 
+
+    public Seient() {
+
+    }
+
     @Id
     @Column(name = "fila", nullable = false, insertable = true, updatable = true)
     public int getFila() {
@@ -86,7 +91,9 @@ public class Seient {
     }
 
     public void canviarEstat(Representació r) {
-        // TODO this.SeientEnRepresentacio.canviaOcupat(r)
+        for (Seientenrepresentació sr : seientenrepresentaciós) {
+            sr.canviarOcupat(r);
+        }
     }
 
 }

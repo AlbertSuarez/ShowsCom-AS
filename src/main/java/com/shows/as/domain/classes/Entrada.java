@@ -33,7 +33,6 @@ public class Entrada {
         this.preu = preu;
     }
 
-    // TODO canviar associa
     public void associa(Representació r, Set<Seientenrepresentació> seientRep) {
         this.representació = r;
         r.associaEntrada(this);
