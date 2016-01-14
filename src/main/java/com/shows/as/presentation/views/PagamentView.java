@@ -76,4 +76,8 @@ public class PagamentView extends JDialog {
         dialog.setVisible(true);
         System.exit(0);
     }
+
+    public void mostraPreu(Double preu) {
+        comboBox1.addItem(new ComboItem(preu.toString(), "Preu"));
+    }
 }

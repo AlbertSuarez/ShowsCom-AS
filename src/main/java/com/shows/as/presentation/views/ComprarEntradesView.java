@@ -161,5 +161,13 @@ public class ComprarEntradesView extends JDialog {
             // TODO Mostrar Error View
             return;
         }
+        /*
+        Set<TupleTypeRepresentacio> t = new Set<TupleTypeRepresentacio>;
+
+        for (t : tupleTypeRepresentacios) {
+            Object[] array = t.toArray();
+            String sessio = t.get(array[2]);
+            comboBox7.addItem(new ComboItem(sessio, "Sessió " + sessio));
+        }*/
     }
 }

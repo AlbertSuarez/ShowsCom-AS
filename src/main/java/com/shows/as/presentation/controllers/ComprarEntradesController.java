@@ -44,12 +44,11 @@ public class ComprarEntradesController {
     }
 
     public void prOkConsultaRepresentacions(String titol, Date data) {
-        comprarEntradesView.mostraRepresentacions(domainController.obteRepresentacions(titol, data));
-
+        //comprarEntradesView.mostraRepresentacions(domainController.obteRepresentacions(titol, data));
     }
 
-    public void prOkConsultaOcupacio(String nomLocal, TipusSessio sessio, Integer nombEspectadors) {
-
+    public void prOkConsultaOcupacio(String nomLocal, TipusSessio s, Integer nombEspectadors) {
+        //comprarEntradesView.mostraSeients(domainController.obteOcupacio(nomLocal, sessio, nombEspectadors));
     }
 
     public void prOkSeleccionarSeients(Set<Seient> seients) {
@@ -58,11 +57,11 @@ public class ComprarEntradesController {
     }
 
     public void prCanviMoneda(Moneda moneda) {
-
+        //pagamentView.mostraPreu(domainController.obtePreuMoneda(moneda));
     }
 
     public void prOkPagament(String dni, Integer codiB, String numCompte) {
-
+        
     }
 
     public void prAcabar() {
@@ -72,5 +71,4 @@ public class ComprarEntradesController {
     public void prCancel() {
         System.exit(0);
     }
-
 }
