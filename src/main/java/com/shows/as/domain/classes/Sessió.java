@@ -15,6 +15,10 @@ public class Sessió {
 
     }
 
+    public Sessió(String sessió) {
+        this.sessió = sessió;
+    }
+
     @Id
     @Column(name = "sessió", nullable = false, insertable = true, updatable = true, length = 255)
     public String getSessió() {

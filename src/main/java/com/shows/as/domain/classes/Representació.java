@@ -37,6 +37,15 @@ public class Representació {
 
     }
 
+    public Representació(Double preu, Date data, Integer nombreseientslliures, String sessió, String nomlocal, String títolesp) {
+        this.preu = preu;
+        this.data = data;
+        this.nombreseientslliures = nombreseientslliures;
+        this.sessió = sessió;
+        this.nomlocal = nomlocal;
+        this.títolesp = títolesp;
+    }
+
     @Basic
     @Column(name = "preu", nullable = true, insertable = true, updatable = true, precision = 17)
     public Double getPreu() {

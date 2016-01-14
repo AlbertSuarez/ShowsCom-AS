@@ -19,6 +19,12 @@ public class Seient {
 
     }
 
+    public Seient(int fila, int columna, String nomlocal) {
+        this.fila = fila;
+        this.columna = columna;
+        this.nomlocal = nomlocal;
+    }
+
     @Id
     @Column(name = "fila", nullable = false, insertable = true, updatable = true)
     public int getFila() {

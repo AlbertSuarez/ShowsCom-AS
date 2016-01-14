@@ -26,6 +26,15 @@ public class Seientenrepresentació {
 
     }
 
+    public Seientenrepresentació(String estat, int fila, int columna, String nomlocal, String sessió, String identrada) {
+        this.estat = estat;
+        this.fila = fila;
+        this.columna = columna;
+        this.nomlocal = nomlocal;
+        this.sessió = sessió;
+        this.identrada = identrada;
+    }
+
     @Basic
     @Column(name = "estat", nullable = true, insertable = true, updatable = true, length = 255)
     public String getEstat() {

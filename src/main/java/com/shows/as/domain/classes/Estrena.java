@@ -1,6 +1,7 @@
 package com.shows.as.domain.classes;
 
 import javax.persistence.*;
+import java.sql.Date;
 
 @Entity
 @Table(name = "estrena", schema = "public", catalog = "postgres")
@@ -15,6 +16,11 @@ public class Estrena extends Representació {
 
     public Estrena() {
 
+    }
+
+    public Estrena(Double preu, Date data, Integer nombreseientslliures, String sessió, String nomlocal, String títolesp, Integer recàrrec) {
+        super(preu, data, nombreseientslliures, sessió, nomlocal, títolesp);
+        this.recàrrec = recàrrec;
     }
 
     @Basic

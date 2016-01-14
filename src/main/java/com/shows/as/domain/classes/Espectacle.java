@@ -5,7 +5,7 @@ import com.shows.as.domain.utils.Utils;
 
 import javax.persistence.*;
 import java.util.Collection;
-import java.util.Date;
+import java.sql.Date;
 import java.util.LinkedHashSet;
 import java.util.Set;
 

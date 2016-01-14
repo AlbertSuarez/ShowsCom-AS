@@ -18,6 +18,11 @@ public class Local {
 
     }
 
+    public Local(String nom, String adreça) {
+        this.nom = nom;
+        this.adreça = adreça;
+    }
+
     @Id
     @Column(name = "nom", nullable = false, insertable = true, updatable = true, length = 255)
     public String getNom() {

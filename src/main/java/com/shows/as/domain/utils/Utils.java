@@ -1,7 +1,7 @@
 package com.shows.as.domain.utils;
 
 import java.util.Calendar;
-import java.util.Date;
+import java.sql.Date;
 import java.util.Random;
 
 public class Utils {
@@ -25,6 +25,14 @@ public class Utils {
         return (day == calendar.get(Calendar.DAY_OF_MONTH) &&
                 month == calendar.get(Calendar.MONTH) &&
                 year == calendar.get(Calendar.YEAR));
+    }
+
+    public static Date createDate(int day, int month, int year) {
+        Calendar cDate = Calendar.getInstance();
+        cDate.set(Calendar.DATE, day);
+        cDate.set(Calendar.MONTH, month);
+        cDate.set(Calendar.YEAR, year);
+        return new Date(cDate.getTimeInMillis());
     }
 
 }

@@ -4,7 +4,7 @@ import com.shows.as.domain.classes.Espectacle;
 import com.shows.as.domain.controllers.CtrlEspectacle;
 import com.shows.as.domain.factories.FactoriaCtrl;
 import com.shows.as.domain.tupleTypes.TupleTypeRepresentacio;
-import java.util.Date;
+import java.sql.Date;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
