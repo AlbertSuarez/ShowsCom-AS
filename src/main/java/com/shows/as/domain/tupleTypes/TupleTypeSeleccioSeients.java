@@ -7,7 +7,7 @@ import java.util.Set;
 
 public class TupleTypeSeleccioSeients {
 
-    public Float preu;
+    public Double preu;
     public Set<Moneda> canvis;
 
     public TupleTypeSeleccioSeients() {

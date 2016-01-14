@@ -1,14 +1,14 @@
 package com.shows.as.domain.controllers;
 
-import com.shows.as.domain.classes.SeientEnRepresentacio;
+import com.shows.as.domain.classes.Seientenrepresentació;
 import com.shows.as.domain.enums.TipusSessio;
 
 import java.util.Set;
 
 public interface CtrlSeientEnRepresentacio {
 
-    Set<SeientEnRepresentacio> getAll();
+    Set<Seientenrepresentació> getAll();
 
-    SeientEnRepresentacio getSeientEnRepresentacio(String nomLocal, TipusSessio sessio, Integer fila, Integer columna);
+    Seientenrepresentació getSeientEnRepresentacio(String nomLocal, String sessio, Integer fila, Integer columna);
 
 }

@@ -10,6 +10,6 @@ public class TupleTypeRepresentacio {
     public String nomSessio;
     public Integer nombreSeientsLliures;
     public Boolean estrena;
-    public Float preu;
+    public Double preu;
 
 }

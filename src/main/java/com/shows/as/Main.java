@@ -1,14 +1,18 @@
 package com.shows.as;
 
-import com.shows.as.domain.adapters.BankServiceAdapter;
-import com.shows.as.domain.adapters.IBankServiceAdapter;
 
-import java.util.Date;
+import com.shows.as.presentation.controllers.ComprarEntradesController;
+
 
 public class Main {
 
     public static void main(String[] args) {
-        IBankServiceAdapter adapter = new BankServiceAdapter();
-        System.out.println(adapter.autoritza("s",1,"n",(float) 4, 3,"df",new Date()).toString());
+        carregaBaseDadesCas1();
+        ComprarEntradesController comprarEntradesController = new ComprarEntradesController();
+        comprarEntradesController.run();
+    }
+
+    private static void carregaBaseDadesCas1() {
+
     }
 }

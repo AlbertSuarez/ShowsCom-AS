@@ -1,49 +1,78 @@
 package com.shows.as.domain.classes;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Transient;
-import java.util.Set;
+import javax.persistence.*;
+import java.util.Collection;
 
 @Entity
+@Table(name = "local", schema = "public", catalog = "postgres")
 public class Local {
+    private String nom;
+    private String adreça;
+    private Collection<Representació> representacions;
+    private Collection<Seient> seients;
+
+
+
+
+    public Local() {
+
+    }
 
     @Id
-    private String nom;
-    private String adreca;
-    @Transient
-    private Set<Seient> seients;
-
-    public Local(){
-
-    }
-
-    public Local(String nom, String adreca){
-        this.nom = nom;
-        this.adreca = adreca;
-    }
-
+    @Column(name = "nom", nullable = false, insertable = true, updatable = true, length = 255)
     public String getNom() {
         return nom;
     }
 
-    public String getAdreca() {
-        return adreca;
+    public void setNom(String nom) {
+        this.nom = nom;
     }
 
-    public void setAdreca(String adreca) {
-        this.adreca = adreca;
+    @Basic
+    @Column(name = "adreça", nullable = true, insertable = true, updatable = true, length = 255)
+    public String getAdreça() {
+        return adreça;
     }
 
-    public Set<Seient> getSeients() {
+    public void setAdreça(String adreça) {
+        this.adreça = adreça;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Local that = (Local) o;
+
+        if (nom != null ? !nom.equals(that.nom) : that.nom != null) return false;
+        if (adreça != null ? !adreça.equals(that.adreça) : that.adreça != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = nom != null ? nom.hashCode() : 0;
+        result = 31 * result + (adreça != null ? adreça.hashCode() : 0);
+        return result;
+    }
+
+    @OneToMany(mappedBy = "localByNomlocal")
+    public Collection<Representació> getRepresentacions() {
+        return representacions;
+    }
+
+    public void setRepresentacions(Collection<Representació> representaciósByNom) {
+        this.representacions = representaciósByNom;
+    }
+
+    @OneToMany(mappedBy = "localByNomlocal")
+    public Collection<Seient> getSeients() {
         return seients;
     }
 
-    public void setSeients(Set<Seient> seients) {
-        this.seients = seients;
-    }
-
-    public void setNom(String nom) {
-        this.nom = nom;
+    public void setSeients(Collection<Seient> seientsByNom) {
+        this.seients = seientsByNom;
     }
 }

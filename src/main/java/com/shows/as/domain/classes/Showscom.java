@@ -6,21 +6,19 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Transient;
 
-@Entity
 public class Showscom {
 
-    @Transient
-    private static Showscom instance = new Showscom();
+    private static Showscom instance;
     private Integer codiBanc;
-    @Id
     private String numeroCompte;
-    private Float comissio;
-    @Transient
+    private Double comissio;
     private Moneda divisa;
-    @Transient
-    private Moneda[] canvis  = new Moneda[2];
+    private Moneda[] canvis;
 
     public static Showscom getInstance() {
+        if (instance == null) {
+            instance = new Showscom();
+        }
         return instance;
     }
 
@@ -28,7 +26,7 @@ public class Showscom {
 
     }
 
-    public Float getComissio() {
+    public Double getComissio() {
         return comissio;
     }
 
@@ -46,5 +44,25 @@ public class Showscom {
 
     public String getNumeroCompte() {
         return numeroCompte;
+    }
+
+    public void setCodiBanc(Integer codiBanc) {
+        this.codiBanc = codiBanc;
+    }
+
+    public void setNumeroCompte(String numeroCompte) {
+        this.numeroCompte = numeroCompte;
+    }
+
+    public void setComissio(Double comissio) {
+        this.comissio = comissio;
+    }
+
+    public void setDivisa(Moneda divisa) {
+        this.divisa = divisa;
+    }
+
+    public void setCanvis(Moneda[] canvis) {
+        this.canvis = canvis;
     }
 }

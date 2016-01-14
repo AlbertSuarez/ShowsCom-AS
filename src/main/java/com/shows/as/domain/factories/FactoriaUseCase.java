@@ -6,30 +6,40 @@ import com.shows.as.domain.useCases.ConsultarRepresentacions;
 
 public class FactoriaUseCase {
 
-    private static FactoriaUseCase instance = new FactoriaUseCase();
+    private static FactoriaUseCase instance;
     private ConsultarRepresentacions consultarRepresentacions;
     private ConsultarOcupacio consultarOcupacio;
     private ComprarEntrada comprarEntrada;
 
     public static FactoriaUseCase getInstance() {
+        if (instance == null) {
+            instance = new FactoriaUseCase();
+        }
         return instance;
     }
 
     private FactoriaUseCase() {
-        consultarRepresentacions = new ConsultarRepresentacions();
-        consultarOcupacio = new ConsultarOcupacio();
-        comprarEntrada = new ComprarEntrada();
+
     }
 
     public ConsultarRepresentacions getConsultarRepresentacions() {
+        if (consultarRepresentacions == null) {
+            consultarRepresentacions = new ConsultarRepresentacions();
+        }
         return consultarRepresentacions;
     }
 
     public ConsultarOcupacio getConsultarOcupacio() {
+        if (consultarOcupacio == null) {
+            consultarOcupacio = new ConsultarOcupacio();
+        }
         return consultarOcupacio;
     }
 
     public ComprarEntrada getComprarEntrada() {
+        if (comprarEntrada == null) {
+            comprarEntrada = new ComprarEntrada();
+        }
         return comprarEntrada;
     }
 

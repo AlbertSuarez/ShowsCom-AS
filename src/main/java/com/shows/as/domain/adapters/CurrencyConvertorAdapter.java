@@ -6,7 +6,7 @@ import com.shows.as.service.CurrencyService;
 
 public class CurrencyConvertorAdapter implements ICurrencyConvertorAdapter {
 
-    public Float conversionRate(Moneda divisa, Moneda moneda) {
+    public Double conversionRate(Moneda divisa, Moneda moneda) {
         ServiceLocator s = ServiceLocator.getInstance();
         CurrencyService currencyService = s.getCurrencyService();
         return currencyService.getConversionRate(divisa, moneda);
