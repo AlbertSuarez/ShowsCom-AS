@@ -99,10 +99,10 @@ public class ComprarEntrada {
         FactoriaCtrl factoriaCtrl = FactoriaCtrl.getInstance();
         CtrlRepresentacio ctrlRepresentacio = factoriaCtrl.getCtrlRepresentacio();
 
-        Representacio r = ctrlRepresentacio.getRepresentacio(this.nLocal, this.tSessio);
+        Representació r = ctrlRepresentacio.getRepresentacio(this.nLocal, this.tSessio);
 
         Double p = r.getPreu();
-        p += r.getRecarrec();
+        p += r.obteRecarrec();
 
         for (Seient s : seients) {
             s.canviarEstat(r);
@@ -167,9 +167,9 @@ public class ComprarEntrada {
         CtrlRepresentacio ctrlRepresentacio = factoriaCtrl.getCtrlRepresentacio();
         CtrlSeientEnRepresentacio ctrlSeientEnRepresentacio = factoriaCtrl.getCtrlSeientEnRepresentacio();
 
-        Representacio r = ctrlRepresentacio.getRepresentacio(this.nLocal, this.tSessio);
+        Representació r = ctrlRepresentacio.getRepresentacio(this.nLocal, this.tSessio);
 
-        Set<SeientEnRepresentacio> seientRep = new LinkedHashSet<SeientEnRepresentacio>();
+        Set<Seientenrepresentació> seientRep = new LinkedHashSet<Seientenrepresentació>();
         for (Seient seient : this.seients) {
             seientRep.add(ctrlSeientEnRepresentacio.getSeientEnRepresentacio(this.nLocal, this.tSessio, seient.getFila(), seient.getColumna()));
         }

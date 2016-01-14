@@ -4,11 +4,10 @@ import javax.persistence.Column;
 import javax.persistence.Id;
 import java.io.Serializable;
 
-public class SeientPK implements Serializable {
+
+public class SeientenrepresentacióPK implements Serializable {
 
     private int fila;
-    private int columna;
-    private String nomlocal;
 
     @Column(name = "fila", nullable = false, insertable = true, updatable = true)
     @Id
@@ -20,6 +19,8 @@ public class SeientPK implements Serializable {
         this.fila = fila;
     }
 
+    private int columna;
+
     @Column(name = "columna", nullable = false, insertable = true, updatable = true)
     @Id
     public int getColumna() {
@@ -29,6 +30,8 @@ public class SeientPK implements Serializable {
     public void setColumna(int columna) {
         this.columna = columna;
     }
+
+    private String nomlocal;
 
     @Column(name = "nomlocal", nullable = false, insertable = true, updatable = true, length = 255)
     @Id
@@ -40,16 +43,29 @@ public class SeientPK implements Serializable {
         this.nomlocal = nomlocal;
     }
 
+    private String sessió;
+
+    @Column(name = "sessió", nullable = false, insertable = true, updatable = true, length = 255)
+    @Id
+    public String getSessió() {
+        return sessió;
+    }
+
+    public void setSessió(String sessió) {
+        this.sessió = sessió;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        SeientPK that = (SeientPK) o;
+        SeientenrepresentacióPK that = (SeientenrepresentacióPK) o;
 
         if (fila != that.fila) return false;
         if (columna != that.columna) return false;
         if (nomlocal != null ? !nomlocal.equals(that.nomlocal) : that.nomlocal != null) return false;
+        if (sessió != null ? !sessió.equals(that.sessió) : that.sessió != null) return false;
 
         return true;
     }
@@ -59,6 +75,7 @@ public class SeientPK implements Serializable {
         int result = fila;
         result = 31 * result + columna;
         result = 31 * result + (nomlocal != null ? nomlocal.hashCode() : 0);
+        result = 31 * result + (sessió != null ? sessió.hashCode() : 0);
         return result;
     }
 }

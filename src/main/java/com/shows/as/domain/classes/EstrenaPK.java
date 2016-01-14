@@ -6,23 +6,20 @@ import java.io.Serializable;
 
 public class EstrenaPK implements Serializable {
 
-    private String sessio;
+    private String sessió;
     private String nomlocal;
 
-    // -----------------------------------------------------------------------------------------------------------------
-
-
-    @Column(name = "sessio", nullable = false, length = 255)
+    @Column(name = "sessió", nullable = false, insertable = true, updatable = true, length = 255)
     @Id
-    public String getSessio() {
-        return sessio;
+    public String getSessió() {
+        return sessió;
     }
 
-    public void setSessio(String sessio) {
-        this.sessio = sessio;
+    public void setSessió(String sessió) {
+        this.sessió = sessió;
     }
 
-    @Column(name = "nomlocal", nullable = false, length = 255)
+    @Column(name = "nomlocal", nullable = false, insertable = true, updatable = true, length = 255)
     @Id
     public String getNomlocal() {
         return nomlocal;
@@ -39,7 +36,7 @@ public class EstrenaPK implements Serializable {
 
         EstrenaPK that = (EstrenaPK) o;
 
-        if (sessio != null ? !sessio.equals(that.sessio) : that.sessio != null) return false;
+        if (sessió != null ? !sessió.equals(that.sessió) : that.sessió != null) return false;
         if (nomlocal != null ? !nomlocal.equals(that.nomlocal) : that.nomlocal != null) return false;
 
         return true;
@@ -47,9 +44,8 @@ public class EstrenaPK implements Serializable {
 
     @Override
     public int hashCode() {
-        int result = sessio != null ? sessio.hashCode() : 0;
+        int result = sessió != null ? sessió.hashCode() : 0;
         result = 31 * result + (nomlocal != null ? nomlocal.hashCode() : 0);
         return result;
     }
-
 }

@@ -1,45 +1,41 @@
 package com.shows.as.domain.classes;
 
 import javax.persistence.*;
+import java.util.Collection;
 
 @Entity
 @Table(name = "seient", schema = "public", catalog = "postgres")
 @IdClass(SeientPK.class)
 public class Seient {
 
-    private Integer fila;
-    private Integer columna;
+    private int fila;
+    private int columna;
     private String nomlocal;
-
-    // -----------------------------------------------------------------------------------------------------------------
-
-
-    public Seient(){
-
-    }
+    private Local localByNomlocal;
+    private Collection<Seientenrepresentació> seientenrepresentaciós;
 
     @Id
-    @Column(name = "fila", nullable = false)
-    public Integer getFila() {
+    @Column(name = "fila", nullable = false, insertable = true, updatable = true)
+    public int getFila() {
         return fila;
     }
 
-    public void setFila(Integer fila) {
+    public void setFila(int fila) {
         this.fila = fila;
     }
 
     @Id
-    @Column(name = "columna", nullable = false)
-    public Integer getColumna() {
+    @Column(name = "columna", nullable = false, insertable = true, updatable = true)
+    public int getColumna() {
         return columna;
     }
 
-    public void setColumna(Integer columna) {
+    public void setColumna(int columna) {
         this.columna = columna;
     }
 
     @Id
-    @Column(name = "nomlocal", nullable = false, length = 255)
+    @Column(name = "nomlocal", nullable = false, insertable = true, updatable = true, length = 255)
     public String getNomlocal() {
         return nomlocal;
     }
@@ -55,8 +51,8 @@ public class Seient {
 
         Seient that = (Seient) o;
 
-        if (fila != null ? !fila.equals(that.fila) : that.fila != null) return false;
-        if (columna != null ? !columna.equals(that.columna) : that.columna != null) return false;
+        if (fila != that.fila) return false;
+        if (columna != that.columna) return false;
         if (nomlocal != null ? !nomlocal.equals(that.nomlocal) : that.nomlocal != null) return false;
 
         return true;
@@ -64,13 +60,33 @@ public class Seient {
 
     @Override
     public int hashCode() {
-        int result = fila != null ? fila.hashCode() : 0;
-        result = 31 * result + (columna != null ? columna.hashCode() : 0);
+        int result = fila;
+        result = 31 * result + columna;
         result = 31 * result + (nomlocal != null ? nomlocal.hashCode() : 0);
         return result;
     }
 
-    public void canviarEstat(Representacio r) {
+    @ManyToOne
+    @JoinColumn(name = "nomlocal", referencedColumnName = "nom", nullable = false)
+    public Local getLocalByNomlocal() {
+        return localByNomlocal;
+    }
+
+    public void setLocalByNomlocal(Local localByNomlocal) {
+        this.localByNomlocal = localByNomlocal;
+    }
+
+    @OneToMany(mappedBy = "seient")
+    public Collection<Seientenrepresentació> getSeientenrepresentaciós() {
+        return seientenrepresentaciós;
+    }
+
+    public void setSeientenrepresentaciós(Collection<Seientenrepresentació> seientenrepresentaciós) {
+        this.seientenrepresentaciós = seientenrepresentaciós;
+    }
+
+    public void canviarEstat(Representació r) {
         // TODO this.SeientEnRepresentacio.canviaOcupat(r)
     }
+
 }

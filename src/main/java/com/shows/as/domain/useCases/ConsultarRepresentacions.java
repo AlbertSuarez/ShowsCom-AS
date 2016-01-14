@@ -25,7 +25,7 @@ public class ConsultarRepresentacions {
 
         Set<String> result = new LinkedHashSet<String>();
         for (Espectacle e : espectacles){
-            result.add(e.getTitol());
+            result.add(e.getTítol());
         }
 
         return result;

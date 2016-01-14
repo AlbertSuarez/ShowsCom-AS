@@ -8,11 +8,9 @@
     <session-factory>
 
         <!-- Database connection settings -->
-        <property name="connection.driver_class">org.apache.derby.jdbc.ClientDriver</property>
-        <property name="connection.url">jdbc:derby://localhost:1527/HibernateDB;create=true</property>
-        <property name="connection.username">user</property>
-        <property name="connection.password">as</property>
-		
+        <property name="connection.driver_class">org.postgresql.Driver</property>
+        <property name="connection.url">jdbc:postgresql://localhost:5433/postgres</property>
+
         <!-- JDBC connection pool (use the built-in) -->
         <property name="connection.pool_size">2</property>
 
@@ -27,12 +25,21 @@
 
         <!-- Echo all executed SQL to stdout -->
         <property name="show_sql">true</property>
+        <mapping class="com.shows.as.domain.classes.Espectacle"/>
+        <mapping class="com.shows.as.domain.classes.Estrena"/>
+        <mapping class="com.shows.as.domain.classes.Local"/>
+        <mapping class="com.shows.as.domain.classes.Representació"/>
+        <mapping class="com.shows.as.domain.classes.Seient"/>
+        <mapping class="com.shows.as.domain.classes.Seientenrepresentació"/>
+        <mapping class="com.shows.as.domain.classes.Sessió"/>
+        <mapping class="com.shows.as.domain.classes.Entrada"/>
+        <mapping class="com.shows.as.domain.classes.Espectacle"/>
 
-   <!--      Drop and re-create the database schema on startup
-        <property name="hbm2ddl.auto">create</property>
+        <!--      Drop and re-create the database schema on startup
+             <property name="hbm2ddl.auto">create</property>
 
-        <mapping resource="org/hibernate/tutorial/domain/Event.hbm.xml"/>
-        <mapping resource="org/hibernate/tutorial/domain/Person.hbm.xml"/> -->
+             <mapping resource="org/hibernate/tutorial/domain/Event.hbm.xml"/>
+             <mapping resource="org/hibernate/tutorial/domain/Person.hbm.xml"/> -->
 
     </session-factory>
 

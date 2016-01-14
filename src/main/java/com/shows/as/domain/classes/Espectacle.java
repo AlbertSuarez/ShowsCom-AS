@@ -1,55 +1,54 @@
 package com.shows.as.domain.classes;
 
-
-import javax.persistence.Entity;
-
-    import com.shows.as.domain.tupleTypes.TupleTypeRepresentacio;
+import com.shows.as.domain.tupleTypes.TupleTypeRepresentacio;
 import com.shows.as.domain.utils.Utils;
 
 import javax.persistence.*;
-    import java.util.Date;
-    import java.util.LinkedHashSet;
-    import java.util.Set;
+import java.util.Collection;
+import java.util.Date;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "espectacle", schema = "public", catalog = "postgres")
 public class Espectacle {
-
     private String títol;
     private Integer participants;
-    @Transient
-    private Set<Representacio> representacions;
+    private Collection<Representació> representacions;
 
-    // -----------------------------------------------------------------------------------------------------------------
 
+
+
+    public Espectacle(){
+
+    }
+
+    public Set<TupleTypeRepresentacio> obteRepresentacions(Date data){
+        Set<TupleTypeRepresentacio> result = new LinkedHashSet<TupleTypeRepresentacio>();
+        for (Representació r : representacions){
+            if (Utils.sameDay(data, r.getData())) result.add(r.obteInfo());
+        }
+        return result;
+    }
 
     @Id
-    @Column(name = "títol", nullable = false, length = 255)
-    public String getTitol() {
+    @Column(name = "títol", nullable = false, insertable = true, updatable = true, length = 255)
+    public String getTítol() {
         return títol;
     }
 
-    public void setTitol(String títol) {
+    public void setTítol(String títol) {
         this.títol = títol;
     }
 
     @Basic
-    @Column(name = "participants", nullable = true)
+    @Column(name = "participants", nullable = true, insertable = true, updatable = true)
     public Integer getParticipants() {
         return participants;
     }
 
     public void setParticipants(Integer participants) {
         this.participants = participants;
-    }
-
-    public Set<TupleTypeRepresentacio> obteRepresentacions(Date data){
-        Set<TupleTypeRepresentacio> result = new LinkedHashSet<TupleTypeRepresentacio>();
-
-        for (Representacio  r : representacions){
-            if (Utils.sameDay(data, r.getData())) result.add(r.getInfo());
-        }
-        return result;
     }
 
     @Override
@@ -72,5 +71,12 @@ public class Espectacle {
         return result;
     }
 
+    @OneToMany(mappedBy = "espectacleByTítolesp")
+    public Collection<Representació> getRepresentacions() {
+        return representacions;
+    }
 
+    public void setRepresentacions(Collection<Representació> representaciósByTítol) {
+        this.representacions = representaciósByTítol;
+    }
 }

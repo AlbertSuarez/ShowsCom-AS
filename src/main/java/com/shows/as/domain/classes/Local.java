@@ -1,18 +1,17 @@
 package com.shows.as.domain.classes;
 
 import javax.persistence.*;
-import java.util.Set;
+import java.util.Collection;
 
 @Entity
 @Table(name = "local", schema = "public", catalog = "postgres")
 public class Local {
-
     private String nom;
     private String adreça;
-    @Transient
-    private Set<Seient> seients;
+    private Collection<Representació> representacions;
+    private Collection<Seient> seients;
 
-    // -----------------------------------------------------------------------------------------------------------------
+
 
 
     public Local(){
@@ -20,7 +19,7 @@ public class Local {
     }
 
     @Id
-    @Column(name = "nom", nullable = false, length = 255)
+    @Column(name = "nom", nullable = false, insertable = true, updatable = true, length = 255)
     public String getNom() {
         return nom;
     }
@@ -30,21 +29,13 @@ public class Local {
     }
 
     @Basic
-    @Column(name = "adreça", nullable = true, length = 255)
+    @Column(name = "adreça", nullable = true, insertable = true, updatable = true, length = 255)
     public String getAdreça() {
         return adreça;
     }
 
     public void setAdreça(String adreça) {
         this.adreça = adreça;
-    }
-
-    public Set<Seient> getSeients() {
-        return seients;
-    }
-
-    public void setSeients(Set<Seient> seients) {
-        this.seients = seients;
     }
 
     @Override
@@ -67,4 +58,21 @@ public class Local {
         return result;
     }
 
+    @OneToMany(mappedBy = "localByNomlocal")
+    public Collection<Representació> getRepresentacions() {
+        return representacions;
+    }
+
+    public void setRepresentacions(Collection<Representació> representaciósByNom) {
+        this.representacions = representaciósByNom;
+    }
+
+    @OneToMany(mappedBy = "localByNomlocal")
+    public Collection<Seient> getSeients() {
+        return seients;
+    }
+
+    public void setSeients(Collection<Seient> seientsByNom) {
+        this.seients = seientsByNom;
+    }
 }

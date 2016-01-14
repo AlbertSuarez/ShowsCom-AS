@@ -6,18 +6,13 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Transient;
 
-@Entity
 public class Showscom {
 
-    @Transient
     private static Showscom instance = new Showscom();
     private Integer codiBanc;
-    @Id
     private String numeroCompte;
     private Float comissio;
-    @Transient
     private Moneda divisa;
-    @Transient
     private Moneda[] canvis  = new Moneda[2];
 
     public static Showscom getInstance() {
