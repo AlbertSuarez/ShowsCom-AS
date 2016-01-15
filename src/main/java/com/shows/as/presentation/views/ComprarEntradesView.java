@@ -125,7 +125,6 @@ public class ComprarEntradesView extends JDialog {
         String word = (String)comboBox5.getSelectedItem();
         String[] s = word.split(" : ");
         controller.prOkConsultaOcupacio(s[0], s[1], (Integer)comboBox6.getSelectedItem());
-        //controller.prOkSeleccionarSeients();
         dispose();
     }
 
@@ -159,7 +158,6 @@ public class ComprarEntradesView extends JDialog {
         local.setVisible(false);
         entrades.setVisible(false);
     }
-
 
 
     public void comprovaRepresentacio() {

@@ -2,6 +2,7 @@ package com.shows.as.persistence;
 
 import com.shows.as.domain.classes.Espectacle;
 import com.shows.as.domain.classes.Representació;
+import com.shows.as.domain.classes.RepresentacióPK;
 import com.shows.as.domain.controllers.CtrlRepresentacio;
 import com.shows.as.domain.enums.TipusSessio;
 import org.hibernate.Session;
@@ -24,7 +25,7 @@ public class CtrlRepresentacioDB implements CtrlRepresentacio {
         SessionFactory sf = HibernateUtils.getSessionFactory();
         Session session = sf.openSession();
 
-        Representació res = (Representació) session.get(Representació.class, Representació.hashCode(nomLocal, sessio));
+        Representació res = (Representació) session.get(Representació.class, new RepresentacióPK(nomLocal, sessio));
         session.close();
         if (res == null)
             throw new IllegalStateException("representacioNoExisteix");

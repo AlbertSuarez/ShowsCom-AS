@@ -22,7 +22,7 @@ public class ComprarEntradesController {
         domainController = new ComprarEntradesUseCaseController();
         iniView = new IniView(this);
         comprarEntradesView = new ComprarEntradesView(this);
-        seientsView = new SeientsView();
+        seientsView = new SeientsView(this);
         pagamentView = new PagamentView();
         errorView = new ErrorView();
     }
@@ -51,13 +51,14 @@ public class ComprarEntradesController {
         }
     }
 
-    public void prOkConsultaOcupacio(String nomLocal, String s, Integer nombEspectadors) {
-        //comprarEntradesView.mostraSeients(domainController.obteOcupacio(nomLocal, sessio, nombEspectadors));
+    public void prOkConsultaOcupacio(String nomLocal, String sessio, Integer nombEspectadors) {
+        seientsView.mostraSeients(domainController.obteOcupacio(nomLocal, sessio, nombEspectadors));
+        seientsView.repInfo(nombEspectadors, nomLocal);
+        seientsView.setVisible(true);
     }
 
     public void prOkSeleccionarSeients(Set<Seient> seients) {
-        comprarEntradesView.setVisible(false);
-        seientsView.setVisible(true);
+
     }
 
     public void prCanviMoneda(Moneda moneda) {

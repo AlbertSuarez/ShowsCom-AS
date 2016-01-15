@@ -1,47 +1,59 @@
 package com.shows.as.presentation.views;
 
+import com.shows.as.domain.classes.Seient;
+import com.shows.as.domain.tupleTypes.TupleTypeFilaColumna;
+import com.shows.as.presentation.controllers.ComprarEntradesController;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 public class SeientsView extends JDialog {
     private JPanel contentPane;
     private JButton buttonOK;
     private JButton buttonCancel;
-    private JCheckBox checkBox1;
-    private JCheckBox checkBox2;
-    private JCheckBox checkBox3;
-    private JCheckBox checkBox4;
-    private JCheckBox checkBox5;
-    private JCheckBox checkBox6;
-    private JCheckBox checkBox7;
-    private JCheckBox checkBox8;
-    private JCheckBox checkBox9;
-    private JCheckBox checkBox10;
-    private JCheckBox checkBox11;
-    private JCheckBox checkBox12;
-    private JCheckBox checkBox13;
-    private JCheckBox checkBox14;
-    private JCheckBox checkBox15;
-    private JCheckBox checkBox16;
-    private JCheckBox checkBox17;
-    private JCheckBox checkBox18;
-    private JCheckBox checkBox19;
-    private JCheckBox checkBox20;
-    private JCheckBox checkBox21;
-    private JCheckBox checkBox22;
-    private JCheckBox checkBox23;
-    private JCheckBox checkBox24;
-    private JCheckBox checkBox25;
-    private JCheckBox checkBox26;
-    private JCheckBox checkBox27;
-    private JCheckBox checkBox28;
-    private JCheckBox checkBox29;
-    private JCheckBox checkBox30;
-    private JCheckBox checkBox31;
-    private JCheckBox checkBox32;
+    private JCheckBox c00;
+    private JCheckBox c01;
+    private JCheckBox c02;
+    private JCheckBox c03;
+    private JCheckBox c04;
+    private JCheckBox c05;
+    private JCheckBox c06;
+    private JCheckBox c07;
+    private JCheckBox c10;
+    private JCheckBox c11;
+    private JCheckBox c12;
+    private JCheckBox c13;
+    private JCheckBox c14;
+    private JCheckBox c15;
+    private JCheckBox c16;
+    private JCheckBox c17;
+    private JCheckBox c20;
+    private JCheckBox c21;
+    private JCheckBox c22;
+    private JCheckBox c23;
+    private JCheckBox c24;
+    private JCheckBox c25;
+    private JCheckBox c26;
+    private JCheckBox c27;
+    private JCheckBox c30;
+    private JCheckBox c31;
+    private JCheckBox c32;
+    private JCheckBox c33;
+    private JCheckBox c34;
+    private JCheckBox c35;
+    private JCheckBox c36;
+    private JCheckBox c37;
 
-    public SeientsView() {
+    private JCheckBox[][] buttons = {{c00, c01, c02, c03, c04, c05, c06, c07}, {c10, c11, c12, c13, c14, c15, c16, c17}, {c20, c21, c22, c23, c24, c25, c26, c27}, {c30, c31, c32, c33, c34, c35, c36, c37}};
+    private int nEspectadors;
+    private String nomlocal;
+    private ComprarEntradesController controller;
+
+    public SeientsView(ComprarEntradesController controller) {
+        this.controller = controller;
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         int width = (int)screenSize.getWidth();
         int height = (int)screenSize.getHeight();
@@ -79,20 +91,39 @@ public class SeientsView extends JDialog {
         }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
     }
 
+    public void repInfo(int nEspectadors, String nomlocal) {
+        this.nEspectadors = nEspectadors;
+        this.nomlocal = nomlocal;
+    }
+
     private void onOK() {
-// add your code here
-        dispose();
+        Set<Seient> seients = new LinkedHashSet<Seient>();
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 8; j++) {
+                if (buttons[i][j].isSelected()) seients.add(new Seient(i, j, this.nomlocal));
+            }
+        }
+        if (seients.size() != this.nEspectadors) {
+            controller.prMostraMissatgeError("Has de seleccionar " + this.nEspectadors + " seients");
+        }
     }
 
     private void onCancel() {
-// add your code here if necessary
         dispose();
     }
 
     public static void main(String[] args) {
-        SeientsView dialog = new SeientsView();
-        dialog.pack();
-        dialog.setVisible(true);
-        System.exit(0);
+
+    }
+
+    public void mostraSeients(Set<TupleTypeFilaColumna> tupleTypeFilaColumnas) {
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 8; j++) {
+                buttons[i][j].setEnabled(false);
+            }
+        }
+        for (TupleTypeFilaColumna t : tupleTypeFilaColumnas) {
+            buttons[t.fila][t.columna].setEnabled(true);
+        }
     }
 }

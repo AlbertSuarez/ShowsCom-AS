@@ -11,6 +11,15 @@ public class RepresentacióPK implements Serializable {
     private String sessió;
     private String nomlocal;
 
+    public RepresentacióPK() {
+
+    }
+
+    public RepresentacióPK(String nomlocal, String sessió) {
+        this.sessió = sessió;
+        this.nomlocal = nomlocal;
+    }
+
     @Column(name = "sessió", nullable = false, insertable = true, updatable = true, length = 255)
     @Id
     public String getSessió() {

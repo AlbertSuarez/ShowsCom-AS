@@ -137,10 +137,10 @@ public class Representació {
         return result;
     }*/
 
-    /*@Override
+    @Override
     public int hashCode() {
         return hashCode(this.nomlocal, this.sessió);
-    }*/
+    }
 
     public static int hashCode(String nomlocal, String sessió){
         String sSurrogate =   String.format("%60s", nomlocal)           // 60 chars
@@ -197,7 +197,8 @@ public class Representació {
         this.sessióBySessió = sessióBySessió;
     }
 
-    @OneToMany(mappedBy = "representació")
+    @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+    @JoinColumns({@JoinColumn(name = "sessió", referencedColumnName = "sessió"), @JoinColumn(name = "nomlocal", referencedColumnName = "nomlocal")})
     public Collection<Seientenrepresentació> getSeients() {
         return seients;
     }
