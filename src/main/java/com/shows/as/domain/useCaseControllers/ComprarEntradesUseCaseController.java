@@ -27,7 +27,7 @@ public class ComprarEntradesUseCaseController {
         return comprarEntrada.obteEspectacles();
     }
 
-    public Set<TupleTypeRepresentacio> obteRepresentacions(String titol, Date data) {
+    public Set<TupleTypeRepresentacio> obteRepresentacions(String titol, Date data) throws Exception{
         return comprarEntrada.obteRepresentacions(titol, data);
     }
 

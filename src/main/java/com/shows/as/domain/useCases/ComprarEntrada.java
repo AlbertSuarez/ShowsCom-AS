@@ -53,13 +53,13 @@ public class ComprarEntrada {
      * @return result = obte els locals, sessions, el nombre de seients lliures, la indicacio de si es estrena i el preu de totes les representacions.
      * @post emmagatzemaDades: s'emmagatzema a la capa de domini el titol i la data.
      */
-    public Set<TupleTypeRepresentacio> obteRepresentacions(String titol, Date data) {
+    public Set<TupleTypeRepresentacio> obteRepresentacions(String titol, Date data) throws Exception {
         FactoriaUseCase factoriaUseCase = FactoriaUseCase.getInstance();
         ConsultarRepresentacions consultarRepresentacions = factoriaUseCase.getConsultarRepresentacions();
 
         Set<TupleTypeRepresentacio> result = consultarRepresentacions.consultaRepresentacions(titol, data);
 
-        if (result.isEmpty()) throw new IllegalStateException(noHiHaRepresentacions);
+        if (result.isEmpty()) throw new Exception(noHiHaRepresentacions);
 
         this.titolEsp = titol;
         this.dataRep = data;

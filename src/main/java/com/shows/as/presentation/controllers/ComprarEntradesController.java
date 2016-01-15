@@ -42,7 +42,13 @@ public class ComprarEntradesController {
     }
 
     public void prOkConsultaRepresentacions(String titol, Date data) {
-        comprarEntradesView.mostraRepresentacions(domainController.obteRepresentacions(titol, data));
+        try {
+            comprarEntradesView.mostraRepresentacions(domainController.obteRepresentacions(titol, data));
+        }
+        catch (Exception e) {
+            prMostraMissatgeError("<html>No hi ha cap representació per<br>l'espectacle i data seleccionats.</html>");
+            comprarEntradesView.amaga();
+        }
     }
 
     public void prOkConsultaOcupacio(String nomLocal, String s, Integer nombEspectadors) {
@@ -60,6 +66,11 @@ public class ComprarEntradesController {
 
     public void prOkPagament(String dni, Integer codiB, String numCompte) {
         
+    }
+
+    public void prMostraMissatgeError(String text) {
+        errorView.mostraMissatgeError(text);
+        errorView.setVisible(true);
     }
 
     public void prAcabar() {

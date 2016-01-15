@@ -28,6 +28,7 @@ public class ComprarEntradesView extends JDialog {
 
     public ComprarEntradesView(ComprarEntradesController controller) {
         this.controller = controller;
+        buttonOK.setEnabled(false);
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         int width = (int)screenSize.getWidth();
         int height = (int)screenSize.getHeight();
@@ -102,6 +103,12 @@ public class ComprarEntradesView extends JDialog {
                 comprobaQualitatDades();
             }
         });
+        comboBox5.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                comprovaRepresentacio();
+            }
+        });
+
     }
 
     private void comprobaQualitatDades(){
@@ -146,11 +153,23 @@ public class ComprarEntradesView extends JDialog {
 
     }
 
+    public void amaga() {
+        comboBox5.setVisible(false);
+        comboBox6.setVisible(false);
+        local.setVisible(false);
+        entrades.setVisible(false);
+    }
+
+
+
+    public void comprovaRepresentacio() {
+        if (comboBox5.getSelectedIndex() != 0) buttonOK.setEnabled(true);
+        else buttonOK.setEnabled(false);
+    }
+
     public void mostraRepresentacions(Set<TupleTypeRepresentacio> tupleTypeRepresentacios) {
-        if (tupleTypeRepresentacios.isEmpty()) {
-            // TODO Mostrar Error View
-            return;
-        }
+        comboBox5.removeAllItems();
+        comboBox5.addItem("-");
         for (TupleTypeRepresentacio t : tupleTypeRepresentacios) {
             comboBox5.addItem(t.nomLocal + " : " + t.nomSessio);
         }

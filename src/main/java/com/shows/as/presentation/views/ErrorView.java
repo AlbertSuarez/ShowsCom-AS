@@ -7,6 +7,7 @@ import java.awt.event.*;
 public class ErrorView extends JDialog {
     private JPanel contentPane;
     private JButton buttonOK;
+    private JLabel errorText;
 
     public ErrorView() {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -41,12 +42,10 @@ public class ErrorView extends JDialog {
     }
 
     private void onOK() {
-// add your code here
         dispose();
     }
 
     private void onCancel() {
-// add your code here if necessary
         dispose();
     }
 
@@ -55,5 +54,9 @@ public class ErrorView extends JDialog {
         dialog.pack();
         dialog.setVisible(true);
         System.exit(0);
+    }
+
+    public void mostraMissatgeError(String text) {
+        errorText.setText(text);
     }
 }
