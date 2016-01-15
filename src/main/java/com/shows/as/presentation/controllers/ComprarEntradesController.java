@@ -39,7 +39,6 @@ public class ComprarEntradesController {
     public void prConsultaEspectacles() {
         comprarEntradesView.mostraEspectacles(domainController.obteEspectacles());
         iniView.setVisible(false);
-        //comprarEntradesView.setVisible(true);
     }
 
     public void prOkConsultaRepresentacions(String titol, Date data) {

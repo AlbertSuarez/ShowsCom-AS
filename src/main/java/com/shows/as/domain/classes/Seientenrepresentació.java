@@ -115,17 +115,6 @@ public class Seientenrepresentació {
         return true;
     }
 
-    /*@Override
-    public int hashCode() {
-        int result = estat != null ? estat.hashCode() : 0;
-        result = 31 * result + fila;
-        result = 31 * result + columna;
-        result = 31 * result + (nomlocal != null ? nomlocal.hashCode() : 0);
-        result = 31 * result + (sessió != null ? sessió.hashCode() : 0);
-        result = 31 * result + (identrada != null ? identrada.hashCode() : 0);
-        return result;
-    }*/
-
     @Override
     public int hashCode() {
         return hashCode(this.nomlocal, this.sessió, this.fila, this.columna);

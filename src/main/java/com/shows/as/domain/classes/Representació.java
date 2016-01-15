@@ -120,23 +120,8 @@ public class Representació {
         if (data != null ? !data.equals(that.data) : that.data != null) return false;
         if (nombreseientslliures != null ? !nombreseientslliures.equals(that.nombreseientslliures) : that.nombreseientslliures != null)
             return false;
-        //if (sessió != null ? !sessió.equals(that.sessió) : that.sessió != null) return false;
-        //if (nomlocal != null ? !nomlocal.equals(that.nomlocal) : that.nomlocal != null) return false;
-        //if (títolesp != null ? !títolesp.equals(that.títolesp) : that.títolesp != null) return false;
-
         return true;
     }
-
-    /*@Override
-    public int hashCode() {
-        int result = preu != null ? preu.hashCode() : 0;
-        result = 31 * result + (data != null ? data.hashCode() : 0);
-        result = 31 * result + (nombreseientslliures != null ? nombreseientslliures.hashCode() : 0);
-        result = 31 * result + (sessió != null ? sessió.hashCode() : 0);
-        result = 31 * result + (nomlocal != null ? nomlocal.hashCode() : 0);
-        result = 31 * result + (títolesp != null ? títolesp.hashCode() : 0);
-        return result;
-    }*/
 
     @Override
     public int hashCode() {

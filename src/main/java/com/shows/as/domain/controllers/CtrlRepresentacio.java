@@ -15,6 +15,4 @@ public interface CtrlRepresentacio {
 
     Representació getRepresentacio(String nomLocal, String sessio);
 
-    List<Representació> getRepresentacioTitol(String titol);
-
 }
