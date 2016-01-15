@@ -103,9 +103,13 @@ public class SeientsView extends JDialog {
                 if (buttons[i][j].isSelected()) seients.add(new Seient(i, j, this.nomlocal));
             }
         }
+
         if (seients.size() != this.nEspectadors) {
             controller.prMostraMissatgeError("Has de seleccionar " + this.nEspectadors + " seients");
+            return;
         }
+        controller.prOkSeleccionarSeients(seients);
+        dispose();
     }
 
     private void onCancel() {

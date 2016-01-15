@@ -1,7 +1,9 @@
 package com.shows.as.presentation.views;
 
 import com.shows.as.domain.enums.Moneda;
+import com.shows.as.domain.tupleTypes.TupleTypeSeleccioSeients;
 import com.shows.as.domain.utils.ComboItem;
+import com.shows.as.presentation.controllers.ComprarEntradesController;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,8 +17,11 @@ public class PagamentView extends JDialog {
     private JTextField textField2;
     private JTextField textField3;
     private JComboBox comboBox1;
+    private JLabel preu;
+    private ComprarEntradesController controller;
 
-    public PagamentView() {
+    public PagamentView(final ComprarEntradesController controller) {
+        this.controller = controller;
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         int width = (int)screenSize.getWidth();
         int height = (int)screenSize.getHeight();
@@ -38,6 +43,12 @@ public class PagamentView extends JDialog {
             }
         });
 
+        comboBox1.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                controller.prCanviMoneda((Moneda) comboBox1.getSelectedItem());
+            }
+        });
+
 // call onCancel() when cross is clicked
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         addWindowListener(new WindowAdapter() {
@@ -53,31 +64,33 @@ public class PagamentView extends JDialog {
             }
         }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
 
-        comboBox1.addItem(new ComboItem(Moneda.EUR.toString(), "Value 1"));
-        comboBox1.addItem(new ComboItem(Moneda.USD.toString(), "Value 2"));
-        comboBox1.addItem(new ComboItem(Moneda.GBP.toString(), "Value 3"));
-
-
     }
 
     private void onOK() {
-// add your code here
-        dispose();
+        if (textField1.getText().isEmpty() || textField2.getText().isEmpty() || textField3.getText().isEmpty()) {
+            controller.prMostraMissatgeError("Omple tots els camps");
+            return;
+        }
+        controller.prOkPagament(textField1.getText(), Integer.parseInt(textField2.getText()), textField3.getText());
     }
 
     private void onCancel() {
-// add your code here if necessary
         dispose();
     }
 
     public static void main(String[] args) {
-        PagamentView dialog = new PagamentView();
-        dialog.pack();
-        dialog.setVisible(true);
-        System.exit(0);
+
     }
 
-    public void mostraPreu(Double preu) {
-        comboBox1.addItem(new ComboItem(preu.toString(), "Preu"));
+    public void seientsSeleccionats(TupleTypeSeleccioSeients tupleTypeSeleccioSeients) {
+        preu.setText(tupleTypeSeleccioSeients.preu.toString());
+        comboBox1.addItem(Moneda.EUR);
+        for (Moneda m : tupleTypeSeleccioSeients.canvis) {
+            comboBox1.addItem(m);
+        }
+    }
+
+    public void mostraPreu(Double preuMoneda) {
+        preu.setText(preuMoneda.toString());
     }
 }

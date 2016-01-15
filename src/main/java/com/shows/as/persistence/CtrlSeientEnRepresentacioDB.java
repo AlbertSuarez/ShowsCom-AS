@@ -2,6 +2,7 @@ package com.shows.as.persistence;
 
 import com.shows.as.domain.classes.Representació;
 import com.shows.as.domain.classes.Seientenrepresentació;
+import com.shows.as.domain.classes.SeientenrepresentacióPK;
 import com.shows.as.domain.controllers.CtrlSeientEnRepresentacio;
 import com.shows.as.domain.enums.TipusSessio;
 import org.hibernate.Session;
@@ -23,7 +24,7 @@ public class CtrlSeientEnRepresentacioDB implements CtrlSeientEnRepresentacio {
         SessionFactory sf = HibernateUtils.getSessionFactory();
         Session session = sf.openSession();
 
-        Seientenrepresentació res = (Seientenrepresentació) session.get(Seientenrepresentació.class, Seientenrepresentació.hashCode(nomLocal, sessio, fila, columna));
+        Seientenrepresentació res = (Seientenrepresentació) session.get(Seientenrepresentació.class, new SeientenrepresentacióPK(fila, columna, nomLocal, sessio));
         session.close();
         if (res == null)
             throw new IllegalStateException("seientenrepresentacioNoExisteix");

@@ -107,7 +107,7 @@ public class ComprarEntrada {
         p += r.obteRecarrec();
 
         for (Seient s : seients) {
-            s.canviarEstat(r);
+            //s.canviarEstat(r);
         }
 
         Showscom showscom = Showscom.getInstance();
@@ -149,7 +149,7 @@ public class ComprarEntrada {
      *                  del servei Bank Service amb les dades dels comptes per fer la transferència i el preu total de l'entrada.
      * @post creacioEntrada: si el pagament s'ha produït amb èxit, es crea una instància de entrada i de les seves associacions amb la representació i els seients de la representació.
      */
-    public void pagament(String dni, Integer codiB, String numCompte) {
+    public void pagament(String dni, Integer codiB, String numCompte) throws Exception {
         Showscom showscom = Showscom.getInstance();
         Integer cb = showscom.getCodiBanc();
         String nc = showscom.getNumeroCompte();
@@ -161,7 +161,7 @@ public class ComprarEntrada {
 
         Boolean b = iBankServiceAdapter.autoritza(dni, codiB, numCompte, this.preuTotal, cb, nc, dt);
 
-        if (!b) throw new IllegalStateException(pagamentNoAutoritzat);
+        if (!b) throw new Exception(pagamentNoAutoritzat);
 
         String id = Utils.random();
 

@@ -43,7 +43,7 @@ public class ComprarEntradesUseCaseController {
         return comprarEntrada.obtePreuMoneda(moneda);
     }
 
-    public void pagament(String dni, Integer codiB, String numCompte) {
+    public void pagament(String dni, Integer codiB, String numCompte) throws Exception {
         comprarEntrada.pagament(dni, codiB, numCompte);
     }
 

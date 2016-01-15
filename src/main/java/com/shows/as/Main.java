@@ -1,5 +1,7 @@
 package com.shows.as;
 
+import com.shows.as.domain.classes.Showscom;
+import com.shows.as.domain.enums.Moneda;
 import com.shows.as.presentation.controllers.ComprarEntradesController;
 
 
@@ -12,6 +14,13 @@ public class Main {
     }
 
     private static void carregaBaseDadesCas1() {
+
+        Showscom showscom = Showscom.getInstance();
+        showscom.setComissio(1.02);
+        showscom.setCodiBanc(23);
+        showscom.setNumeroCompte("123456789");
+        showscom.setDivisa(Moneda.EUR);
+        showscom.setCanvis(new Moneda[]{Moneda.GBP, Moneda.USD});
 
         /*HibernateUtils.save(new Espectacle("Cats", 10));
         HibernateUtils.save(new Espectacle("El Rey Leon", 20));

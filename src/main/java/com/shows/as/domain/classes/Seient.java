@@ -2,6 +2,8 @@ package com.shows.as.domain.classes;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.Set;
+
 /*
 Implementació de la classe Seient del paquet domain.classes
  */
@@ -14,7 +16,7 @@ public class Seient {
     private int columna;
     private String nomlocal;
     private Local localByNomlocal;
-    private Collection<Seientenrepresentació> seientenrepresentaciós;
+    private Set<Seientenrepresentació> seientenrepresentaciós;
 
 
     public Seient() {
@@ -89,17 +91,18 @@ public class Seient {
         this.localByNomlocal = localByNomlocal;
     }
 
-    @OneToMany(mappedBy = "seient")
-    public Collection<Seientenrepresentació> getSeientenrepresentaciós() {
+    @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+    @JoinColumns({@JoinColumn(name = "nomlocal", referencedColumnName = "nomlocal"), @JoinColumn(name = "fila", referencedColumnName = "fila"), @JoinColumn(name = "columna", referencedColumnName = "columna")})
+    public Set<Seientenrepresentació> getSeientenrepresentaciós() {
         return seientenrepresentaciós;
     }
 
-    public void setSeientenrepresentaciós(Collection<Seientenrepresentació> seientenrepresentaciós) {
+    public void setSeientenrepresentaciós(Set<Seientenrepresentació> seientenrepresentaciós) {
         this.seientenrepresentaciós = seientenrepresentaciós;
     }
 
     public void canviarEstat(Representació r) {
-        for (Seientenrepresentació sr : seientenrepresentaciós) {
+        for (Seientenrepresentació sr : getSeientenrepresentaciós()) {
             sr.canviarOcupat(r);
         }
     }

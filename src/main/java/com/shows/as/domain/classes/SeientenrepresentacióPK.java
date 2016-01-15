@@ -57,6 +57,18 @@ public class SeientenrepresentacióPK implements Serializable {
         this.sessió = sessió;
     }
 
+
+    public SeientenrepresentacióPK() {
+
+    }
+
+    public SeientenrepresentacióPK(int fila, int columna, String nomlocal, String sessió) {
+        this.fila = fila;
+        this.columna = columna;
+        this.nomlocal = nomlocal;
+        this.sessió = sessió;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

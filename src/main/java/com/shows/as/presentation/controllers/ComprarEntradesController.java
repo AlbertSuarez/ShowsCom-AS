@@ -23,7 +23,7 @@ public class ComprarEntradesController {
         iniView = new IniView(this);
         comprarEntradesView = new ComprarEntradesView(this);
         seientsView = new SeientsView(this);
-        pagamentView = new PagamentView();
+        pagamentView = new PagamentView(this);
         errorView = new ErrorView();
     }
 
@@ -58,15 +58,23 @@ public class ComprarEntradesController {
     }
 
     public void prOkSeleccionarSeients(Set<Seient> seients) {
-
+        pagamentView.seientsSeleccionats(domainController.seleccionarSeients(seients));
+        pagamentView.setVisible(true);
     }
 
     public void prCanviMoneda(Moneda moneda) {
-        //pagamentView.mostraPreu(domainController.obtePreuMoneda(moneda));
+        pagamentView.mostraPreu(domainController.obtePreuMoneda(moneda));
     }
 
     public void prOkPagament(String dni, Integer codiB, String numCompte) {
-        
+        try {
+            domainController.pagament(dni, codiB, numCompte);
+            iniView.setVisible(true);
+            pagamentView.dispose();
+        }
+        catch (Exception e) {
+            prMostraMissatgeError("<html>El banc ha refusat<br>el pagament de l'entrada.</html>");
+        }
     }
 
     public void prMostraMissatgeError(String text) {
