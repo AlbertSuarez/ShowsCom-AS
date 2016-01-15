@@ -14,6 +14,7 @@ import com.shows.as.domain.tupleTypes.TupleTypeFilaColumna;
 import com.shows.as.domain.tupleTypes.TupleTypeRepresentacio;
 import com.shows.as.domain.tupleTypes.TupleTypeSeleccioSeients;
 import com.shows.as.domain.utils.Utils;
+import com.shows.as.persistence.HibernateUtils;
 
 import java.sql.Date;
 import java.util.*;
@@ -157,7 +158,7 @@ public class ComprarEntrada {
         FactoriaServeis factoriaServeis = FactoriaServeis.getInstance();
         IBankServiceAdapter iBankServiceAdapter = factoriaServeis.getiBankServiceAdapter();
 
-        Date dt = (java.sql.Date) Calendar.getInstance().getTime();
+        Date dt = new Date(Calendar.getInstance().getTimeInMillis());
 
         Boolean b = iBankServiceAdapter.autoritza(dni, codiB, numCompte, this.preuTotal, cb, nc, dt);
 
@@ -178,7 +179,7 @@ public class ComprarEntrada {
 
         Entrada e = new Entrada(id, dni, this.nEspectadors, dt, this.preuTotal);
         e.associa(r, seientRep);
-        // TODO insert e
+        HibernateUtils.save(e);
     }
 
 }

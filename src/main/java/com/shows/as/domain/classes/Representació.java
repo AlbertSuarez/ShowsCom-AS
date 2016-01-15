@@ -25,7 +25,7 @@ public class Representació {
     private String sessió;
     private String nomlocal;
     private String títolesp;
-    private Collection<Entrada> entradas;
+    private Set<Entrada> entradas;
     private Estrena estrena;
     private Espectacle espectacleByTítolesp;
     private Local localByNomlocal;
@@ -149,12 +149,13 @@ public class Representació {
         return sSurrogate.hashCode();
     }
 
-    @OneToMany(mappedBy = "representació")
-    public Collection<Entrada> getEntradas() {
+    @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+    @JoinColumns({@JoinColumn(name = "sessió", referencedColumnName = "sessió"), @JoinColumn(name = "nomlocal", referencedColumnName = "nomlocal")})
+    public Set<Entrada> getEntradas() {
         return entradas;
     }
 
-    public void setEntradas(Collection<Entrada> entradas) {
+    public void setEntradas(Set<Entrada> entradas) {
         this.entradas = entradas;
     }
 
