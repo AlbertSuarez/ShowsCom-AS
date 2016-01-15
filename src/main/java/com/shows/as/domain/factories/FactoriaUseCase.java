@@ -7,6 +7,7 @@ import com.shows.as.domain.useCases.ConsultarRepresentacions;
 /*
 Implementació de la classe FactoriaUseCase
  */
+//Entitat que representa una factoria de casos d'ús
 public class FactoriaUseCase {
 
     private static FactoriaUseCase instance;

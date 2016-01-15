@@ -12,6 +12,7 @@ import java.util.Set;
 /*
 Implementació del cas d'ús consultarRepresentacions
  */
+//Entitat que representa el cas dús consultar Representacions
 public class ConsultarRepresentacions {
 
     public static final String noHiHaEspectacles = "No hi ha espectacles enregistrats al sistema";

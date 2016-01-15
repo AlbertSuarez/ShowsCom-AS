@@ -6,6 +6,7 @@ import java.io.Serializable;
 /*
 Implementació de la classe EstrenaPK, primary key de la classe Estrena.
  */
+//entitat de Hibernate que representa la primary key de la classe Estrena
 public class EstrenaPK implements Serializable {
 
     private String sessió;

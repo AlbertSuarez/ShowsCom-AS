@@ -7,6 +7,7 @@ import com.shows.as.domain.adapters.ICurrencyConvertorAdapter;
 /*
 Implementació de la classe FactoriaServeis
  */
+//Entitat que representa una factoria de adaptadors de serveis
 public class FactoriaServeis {
 
     private static FactoriaServeis instance;

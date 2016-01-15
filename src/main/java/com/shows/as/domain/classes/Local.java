@@ -5,6 +5,7 @@ import java.util.Collection;
 /*
 Implementació de la classe Local del paquet domain.classes
  */
+//entitat que representa un local on s'efectuen representacions
 @Entity
 @Table(name = "local", schema = "public", catalog = "postgres")
 public class Local {

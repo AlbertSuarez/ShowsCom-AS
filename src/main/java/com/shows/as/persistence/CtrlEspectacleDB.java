@@ -8,6 +8,7 @@ import org.hibernate.SessionFactory;
 import java.util.List;
 import java.util.Set;
 
+//Entitat que representa un controlador de la classe espectacle a la base de dades
 public class CtrlEspectacleDB implements CtrlEspectacle {
 
     public List<Espectacle> getAll() {

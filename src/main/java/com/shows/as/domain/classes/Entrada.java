@@ -7,6 +7,7 @@ import java.util.Set;
 /*
 Implementació de la classe Entrada del paquet domain.classes
  */
+//entitat que representa una entrada a una representació
 @Entity
 @Table(name = "entrada", schema = "public", catalog = "postgres")
 public class Entrada {

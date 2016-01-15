@@ -5,6 +5,7 @@ import com.shows.as.domain.enums.Moneda;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+//Entitat que representa una tupla
 public class TupleTypeSeleccioSeients {
 
     public Double preu;

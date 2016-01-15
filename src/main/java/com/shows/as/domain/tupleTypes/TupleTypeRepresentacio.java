@@ -4,6 +4,7 @@ import com.shows.as.domain.enums.TipusSessio;
 
 import java.util.Date;
 
+//Entitat que representa una tupla
 public class TupleTypeRepresentacio {
 
     public String nomLocal;

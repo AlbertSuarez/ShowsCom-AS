@@ -8,6 +8,7 @@ import java.util.Set;
 /*
 Implementació de la classe CtrlEspectacle del paquet domain.controllers
  */
+//Entitat que representa un controlador de la classe Espectacle
 public interface CtrlEspectacle {
 
     List<Espectacle> getAll();

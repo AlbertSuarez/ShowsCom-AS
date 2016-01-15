@@ -1,5 +1,6 @@
 package com.shows.as.domain.utils;
 
+//Entitat que representa un ComboItem
 public class ComboItem
 {
     private String key;

@@ -8,6 +8,7 @@ import javax.persistence.Transient;
 /*
 Implementació de la classe Showscom del paquet domain.classes. Aquesta classe és singleton.
  */
+//Entitat que representa l'usuari Showscom
 public class Showscom {
 
     private static Showscom instance;

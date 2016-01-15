@@ -10,6 +10,7 @@ import com.shows.as.persistence.CtrlSeientEnRepresentacioDB;
 /*
 Implementació de la classe FactoriaCtrl.
  */
+//Entitat que representa una factoria de classes controlador
 public class FactoriaCtrl {
 
     private static FactoriaCtrl instance;

@@ -7,6 +7,7 @@ import java.io.Serializable;
 /*
 Implementació de la classe SeientenrepresentacioPK, primary key de la classe SeientEnRepresentacio.
  */
+//Entitat propia de Hibernate que representa la primary key de la classe SeienEnRepresentació
 public class SeientenrepresentacióPK implements Serializable {
 
     private int fila;

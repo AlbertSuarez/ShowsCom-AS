@@ -11,6 +11,7 @@ import java.util.Set;
 /*
 Implementació de la classe Representació del paquet domain.classes
  */
+//entitat que representa  una representació d'un espectacle
 @Entity
 @Table(name = "representació", schema = "public", catalog = "postgres")
 @IdClass(RepresentacióPK.class)

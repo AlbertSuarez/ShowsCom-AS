@@ -3,6 +3,7 @@ package com.shows.as.domain.factories;
 import com.shows.as.service.BankService;
 import com.shows.as.service.CurrencyService;
 
+//Entitat que representa un localitzador de serveis web que utilitza el sistema
 public class ServiceLocator {
 
     private static ServiceLocator instance;

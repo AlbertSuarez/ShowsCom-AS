@@ -5,6 +5,7 @@ import java.util.Collection;
 /*
 Implementació de la classe Sessio del paquet domain.classes
  */
+//Entitat que representa una sessió
 @Entity
 @Table(name = "sessió", schema = "public", catalog = "postgres")
 public class Sessió {

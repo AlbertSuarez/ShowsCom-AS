@@ -5,6 +5,7 @@ import java.sql.Date;
 /*
 Implementació de la classe Estrena del paquet domain.classes
  */
+//Entitat que representa l'estrena d'un espectacle
 @Entity
 @Table(name = "estrena", schema = "public", catalog = "postgres")
 //@IdClass(EstrenaPK.class)

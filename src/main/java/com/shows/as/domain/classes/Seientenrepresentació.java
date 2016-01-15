@@ -7,6 +7,7 @@ import javax.persistence.*;
 /*
 Implementació de la classe SeientEnRepresentacio del paquet domain.classes
  */
+//Entitat que representa un seient durant una representació
 @Entity
 @Table(name = "seientenrepresentació", schema = "public", catalog = "postgres")
 @IdClass(SeientenrepresentacióPK.class)

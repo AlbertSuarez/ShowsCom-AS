@@ -2,6 +2,7 @@ package com.shows.as.service;
 
 import com.shows.as.domain.enums.Moneda;
 
+//Entitat que simula el comportament d'un servei web de canvi de divisa
 public class CurrencyService {
 
     private static final Double eurTOusd = 1.08;

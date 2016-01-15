@@ -9,6 +9,7 @@ import com.shows.as.presentation.views.*;
 import java.sql.Date;
 import java.util.Set;
 
+//Entitat que representa un controlador de persistencia del cas d'ús ComprarEntrades
 public class ComprarEntradesController {
 
     private ComprarEntradesUseCaseController domainController;

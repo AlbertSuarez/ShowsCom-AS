@@ -7,6 +7,7 @@ import java.util.Set;
 /*
 Implementació de la classe Seient del paquet domain.classes
  */
+//Entitat que representa un seient d'un local
 @Entity
 @Table(name = "seient", schema = "public", catalog = "postgres")
 @IdClass(SeientPK.class)

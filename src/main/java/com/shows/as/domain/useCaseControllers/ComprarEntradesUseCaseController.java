@@ -14,6 +14,7 @@ import java.util.Set;
 /*
 Implementació de la classe ComprarEntradesUseCaseController. Controlador del cas d'ús comprarEntrades
  */
+//Entitat que representa un controlador del cas d'ús comprar entrades
 public class ComprarEntradesUseCaseController {
 
     private ComprarEntrada comprarEntrada;

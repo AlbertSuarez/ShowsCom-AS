@@ -10,6 +10,7 @@ import java.util.Set;
 /*
 Implementació del cas d'ús consultarOcupació
  */
+//Entitat que representa el cas d'ús consultar Ocupació
 public class ConsultarOcupacio {
 
     /**

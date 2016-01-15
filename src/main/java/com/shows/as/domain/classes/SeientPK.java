@@ -6,6 +6,7 @@ import java.io.Serializable;
 /*
 Implementació de la classe SeientPK, primary key de la classe Seient.
  */
+//Entitat de Hibernate que representa la primary key de la classe seient
 public class SeientPK implements Serializable {
 
     private int fila;

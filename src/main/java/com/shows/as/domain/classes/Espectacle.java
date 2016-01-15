@@ -12,6 +12,7 @@ import java.util.Set;
 /*
 Implementació de la classe Espectacle del paquet domain.classes
  */
+//entitat que representa un espectacle
 @Entity
 @Table(name = "espectacle", schema = "public", catalog = "postgres")
 public class Espectacle {

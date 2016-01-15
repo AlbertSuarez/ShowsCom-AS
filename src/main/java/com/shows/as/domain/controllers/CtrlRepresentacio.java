@@ -8,6 +8,7 @@ import java.util.Set;
 /*
 Implementacio de la classe CtrlSeientEnRepresentacio del paquet domain.controllers
  */
+//Entitat que representa un controlador de la classe representació
 public interface CtrlRepresentacio {
 
     Set<Representació> getAll();

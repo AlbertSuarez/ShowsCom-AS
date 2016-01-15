@@ -7,6 +7,7 @@ import java.io.Serializable;
 /*
 Implementació de la classe RepresentacioPK, primary key de la classe Representacio.
  */
+//Entitat de Hibernate que representa la primary key de la classe Representació
 public class RepresentacióPK implements Serializable {
     private String sessió;
     private String nomlocal;

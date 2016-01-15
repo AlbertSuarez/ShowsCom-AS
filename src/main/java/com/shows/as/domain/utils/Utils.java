@@ -7,6 +7,7 @@ import java.util.Random;
 /*
 Implementacio de la classe Utils. Aquesta classe conté diferents mètodes necessàris per l'execució.
  */
+//Classe que incorpora funcions utils per al funcionament del sistema
 public class Utils {
 
     private final static Random generator = new Random();

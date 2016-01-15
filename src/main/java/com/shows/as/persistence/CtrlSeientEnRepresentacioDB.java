@@ -10,6 +10,7 @@ import org.hibernate.SessionFactory;
 
 import java.util.Set;
 
+//Entitat que representa un controlador de la classe SeientenRepresentació de la base de dades
 public class CtrlSeientEnRepresentacioDB implements CtrlSeientEnRepresentacio {
     public Set<Seientenrepresentació> getAll() {
         SessionFactory sf = HibernateUtils.getSessionFactory();

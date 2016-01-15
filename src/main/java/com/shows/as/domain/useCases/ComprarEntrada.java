@@ -21,6 +21,7 @@ import java.util.*;
 /*
 Implementació del cas d'ús comprarEntrada
  */
+//Entitat que representa un cas d'ús de comprar entrada
 public class ComprarEntrada {
 
     public static final String noHiHaRepresentacions = "No Hi Ha Representacions per l'espectacle i data";
